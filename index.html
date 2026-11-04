@@ -1,0 +1,136 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>대학원 지도 — Text Lab. 911</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+body{background:var(--bg)}
+.adv{max-width:1200px;margin:0 auto;padding:110px var(--pad) 60px}
+.adv h1{font-size:clamp(34px,6vw,68px);font-weight:600;letter-spacing:-.03em;word-break:keep-all}
+.adv .lead{color:var(--ink2);margin:14px 0 36px;max-width:680px;word-break:keep-all;line-height:1.7}
+.adv section{margin:0 0 56px}
+.adv h2{font-size:22px;font-weight:600;margin-bottom:16px;display:flex;gap:10px;align-items:baseline;word-break:keep-all}
+.adv h2 b{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:500}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px 24px;line-height:1.75;word-break:keep-all}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card a{color:var(--acc)}
+.qr{display:flex;gap:20px;align-items:center}.qr img{width:150px;height:150px;border:1px solid var(--line);border-radius:4px;background:#fff}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:s}
+.steps div{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--acc);padding:16px;border-radius:4px;word-break:keep-all}
+.steps b{display:block;font-family:var(--mono);font-size:11px;color:var(--mute);margin-bottom:4px}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+table.t{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+.t th,.t td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.t th{background:var(--bg2);font-weight:600;font-size:12px;color:var(--ink2);white-space:nowrap}
+.t td.d{font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--ink2)}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;border:1px solid var(--line2);white-space:nowrap}
+.tag.phd{border-color:var(--acc);color:var(--acc)}.tag.non{background:var(--bg2)}
+.chip{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:2px 8px;margin:2px 4px 2px 0;border-radius:10px;background:var(--bg2);border:1px solid var(--line);white-space:nowrap}
+.gal{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1100px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal figure{margin:0;position:relative;border-radius:8px;overflow:hidden;cursor:zoom-in;background:var(--frame);aspect-ratio:4/3;box-shadow:0 1px 0 var(--line)}
+.gal img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .4s}
+.gal img.ld{opacity:1}
+.gal figure:hover img{transform:scale(1.045);filter:brightness(.92)}
+.gal figure::after{content:"↗";position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--ink);font-size:13px;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-4px);transition:.3s var(--ease)}
+.gal figure:hover::after{opacity:1;transform:none}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:12.5px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));word-break:keep-all}
+.gal .ph-tile{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,var(--bg2) 0 12px,var(--frame) 12px 24px);display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:13px;border-radius:8px;border:1px solid var(--line)}
+.lb{position:fixed;inset:0;background:rgba(12,13,15,.97);display:none;z-index:2147483000;color:#fff;touch-action:pan-y}
+.lb.on{display:grid;grid-template-rows:56px 1fr auto}
+.lb .bar{display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#c9ccd1}
+.lb .x{font-size:26px;line-height:1;color:#fff;background:none;border:0;cursor:pointer;padding:6px 8px}
+.lb .stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:0;padding:0 64px}
+.lb .stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;transition:opacity .25s}
+.lb .nv{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}
+.lb .nv:hover{background:rgba(255,255,255,.2)}.lb .pv{left:12px}.lb .nx{right:12px}
+.lb .info{padding:14px 24px 22px;display:flex;gap:22px;flex-wrap:wrap;justify-content:center;font-size:14px;min-height:20px}
+.lb .info span{color:#e6e8eb}.lb .info b{font-family:var(--mono);font-weight:400;font-size:11px;color:#8d939b;margin-right:6px;letter-spacing:.06em}
+.lb .info p{flex-basis:100%;text-align:center;color:#c9ccd1;margin:0}
+@media(max-width:760px){.gal{grid-template-columns:1fr 1fr;gap:8px}.lb .stage{padding:0 8px}.lb .nv{width:38px;height:38px;background:rgba(0,0,0,.35)}}
+.meta{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:8px}
+@media(max-width:760px){.grid2,.steps{grid-template-columns:1fr 1fr}.qr{flex-direction:column;align-items:flex-start}}
+@media(max-width:420px){.steps{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.nav .logo{white-space:nowrap}}
+.btn-th{display:inline-block;padding:10px 18px;border-radius:22px;background:var(--acc);color:#fff;font-weight:600;font-size:14px;transition:transform .3s var(--ease)}.btn-th:hover{transform:translateY(-2px)}
+.t a.nm{color:inherit;border-bottom:1px dashed var(--line2)}.t a.nm:hover{color:var(--acc)}
+</style></head><body>
+<nav class="nav" id="nav"><div class="wrap g12">
+  <a href="https://textlab911.com/" class="logo notranslate" translate="no"><i></i>Text Lab. 911</a>
+  <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">MENU</button>
+  <ul>
+    <li><a href="https://textlab911.com/#tools">개발도구</a></li><li><a href="https://textlab911.com/#about">소개</a></li>
+    <li><a href="https://textlab911.com/#research">연구</a></li><li><a href="https://textlab911.com/#members">구성원</a></li>
+    <li><a href="https://textlab911.com/">대학원</a></li><li><a href="./" class="active">대학원 지도</a></li><li><a href="theses.html">지도학생 논문</a></li>
+    <li><a href="https://textlab911.com/#contact">연락</a></li>
+  </ul></div></nav>
+<main class="adv">
+  <h1>대학원 지도</h1>
+  <p class="lead">서정호 교수 지도학생을 위한 안내 페이지입니다. 공지사항, 단톡방, 논문 지도 절차와 지도 진행 현황을 확인하세요.</p>
+  <p style="margin:-18px 0 36px"><a class="btn-th" href="theses.html">지도학생 논문 보기 →</a></p>
+
+  <section id="notice"><h2><b>01</b>공지사항</h2>
+    <div class="grid2">
+      <div class="card"><strong>1. 개인 정보 제출</strong><br>지도학생은 <b>사진, 핸드폰 번호, 이메일 주소</b>를 지도교수 이메일 <a class="notranslate" translate="no" href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a>로 보내 주세요.<br><span class="small" style="color:var(--mute)">보내 주신 정보와 사진은 지도 기록용으로만 쓰며, 이 사이트에는 게시하지 않습니다.</span></div>
+      <div class="card"><strong>2. 카카오톡 단톡방 참여</strong><br>연구 피드백과 공지는 단톡방으로 알립니다. 꼭 들어오세요.
+        <div class="qr" style="margin-top:12px"><img src="assets/kakao_qr.png" alt="카카오톡 단톡방 QR 코드"><a class="notranslate" translate="no" href="https://invite.kakao.com/tc/laAIAA2u8a" target="_blank" rel="noopener">invite.kakao.com/tc/laAIAA2u8a</a></div></div>
+    </div></section>
+
+  <section id="process"><h2><b>02</b>논문 지도 절차</h2>
+    <div class="card">연구 지도는 각자의 진행 상황에 맞춰 <b>필요에 따라 여러 차례</b> 진행합니다. 지도 내용을 반영해 논문 준비가 되면 <b>최종 심사</b>를 받습니다.</div>
+    <div class="steps" style="grid-template-columns:repeat(2,1fr);margin-top:12px"><div><b>연구 지도 · 반복</b>주제·방법·분석·원고에 대해 필요한 만큼 지도</div><div><b>최종 심사</b>준비가 되면 심사 진행</div></div></section>
+
+  <section id="current"><h2><b>03</b>재학 지도학생 <span class="small" id="nCur"></span></h2>
+    <div class="tw"><table class="t" id="tCur"></table></div></section>
+
+  <section id="alumni"><h2><b>04</b>졸업생 <span class="small" id="nGrad"></span></h2>
+    <div class="tw"><table class="t" id="tGrad"></table></div></section>
+
+  <section id="photos"><h2><b>05</b>단체·활동 사진</h2>
+    <p class="small" style="color:var(--ink2);margin:-6px 0 14px">세미나·심사·졸업 등 활동 사진이 여기에 올라옵니다.</p>
+    <div class="gal" id="gal"></div></section>
+
+  <section id="contact"><h2><b>06</b>지도교수 연락처</h2>
+    <div class="card">서정호 교수 · 이메일 <a class="notranslate" translate="no" href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a></div>
+    <p class="meta notranslate" translate="no" id="meta"></p></section>
+</main>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="사진 크게 보기"><div class="bar"><span id="lbN"></span><button class="x" id="lbX" aria-label="닫기">×</button></div><div class="stage"><button class="nv pv" id="lbP" aria-label="이전 사진">←</button><img id="lbI" alt=""><button class="nv nx" id="lbNx" aria-label="다음 사진">→</button></div><div class="info" id="lbInfo"></div></div>
+<footer><div class="wrap g12"><span class="c1-3">© Text Lab. 911</span><span class="c4-12">미리보기 (Preview) · 학번·연락처·학적 상태 등 개인정보 미포함 · 자동 번역은 부정확할 수 있습니다</span></div></footer>
+<script>
+document.getElementById('menuBtn').onclick=()=>document.getElementById('nav').classList.toggle('open');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const chips=a=>(a||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+const d=a=>(a||[]).map(esc).join('<br>');
+const tag=c=>c?`<span class="tag ${c==='박사'?'phd':''}">${esc(c)}</span>`:'';
+const mt=m=>m?`<span class="tag ${m.startsWith('비논문')?'non':''}">${esc(m)}</span>`:'';
+const head=x=>`<tr><th>이름</th><th>한글 이름</th>${x||''}<th>과정</th><th>연구 방법</th><th>지도 기록</th><th>최종 심사</th></tr>`;
+const sid=n=>'s-'+n.toLowerCase().replace(/[^a-z0-9가-힣]+/g,'-');
+const row=(r,x)=>`<tr><td class="notranslate" translate="no"><a class="nm" href="theses.html#${sid(r.name)}">${esc(r.name)}</a></td><td class="notranslate" translate="no">${esc(r.name_ko)}</td>${x||''}<td>${tag(r.course)}</td><td>${mt(r.method)}</td><td class="notranslate" translate="no">${chips(r.advising)}</td><td class="notranslate" translate="no">${chips(r.final)}</td></tr>`;
+fetch('assets/advising.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
+  tCur.innerHTML=head()+j.current.map(r=>row(r)).join('');
+  tGrad.innerHTML=head('<th>졸업</th>')+j.graduates.map(r=>row(r,`<td>${esc(r.grad_note||r.grad_year)}</td>`)).join('');
+  nCur.textContent=`${j.current.length}명`;nGrad.textContent=`${j.graduates.length}명`;
+  meta.textContent=`데이터 갱신: ${j.generated_at}`;
+});
+fetch('assets/advising_photos.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>[]).then(ps=>{
+  if(!ps||!ps.length){gal.innerHTML=Array(4).fill('<div class="ph-tile">사진 준비 중</div>').join('');return;}
+  const line=p=>[p.course,p.date].filter(Boolean).map(esc).join(' · ');
+  gal.innerHTML=ps.map((p,i)=>`<figure data-i="${i}" tabindex="0"><img src="${esc(p.src)}" alt="${esc(p.caption||p.course||'단체·활동 사진')}" loading="lazy" decoding="async">${line(p)?`<figcaption>${line(p)}</figcaption>`:''}</figure>`).join('');
+  gal.querySelectorAll('img').forEach(i=>{if(i.complete&&i.naturalWidth)i.classList.add('ld');else i.addEventListener('load',()=>i.classList.add('ld'))});
+  let cur=0;const n=ps.length;
+  const show=i=>{cur=(i+n)%n;const p=ps[cur];lbI.src=p.src;lbI.alt=p.caption||p.course||'단체·활동 사진';lbN.textContent=`${cur+1} / ${n}`;
+    const f=[['날짜',p.date],['수업명',p.course],['장소',p.place]].filter(x=>x[1]).map(x=>`<span><b>${x[0]}</b>${esc(x[1])}</span>`).join('');
+    lbInfo.innerHTML=f+(p.caption?`<p>${esc(p.caption)}</p>`:'');
+    new Image().src=ps[(cur+1)%n].src;};
+  const open=i=>{show(i);lb.classList.add('on');document.body.style.overflow='hidden';lbX.focus();};
+  const close=()=>{lb.classList.remove('on');document.body.style.overflow='';};
+  gal.onclick=e=>{const f=e.target.closest('figure');if(f)open(+f.dataset.i)};
+  gal.onkeydown=e=>{const f=e.target.closest('figure');if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();open(+f.dataset.i)}};
+  lbP.onclick=e=>{e.stopPropagation();show(cur-1)};lbNx.onclick=e=>{e.stopPropagation();show(cur+1)};lbX.onclick=close;
+  lb.onclick=e=>{if(e.target===lb||e.target.classList.contains('stage'))close()};
+  document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+  let sx=null;lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));sx=null});
+  window._adv={open,show};
+});
+</script><script src="assets/lang.js"></script>
+</body></html>

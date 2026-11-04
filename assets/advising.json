@@ -1,0 +1,481 @@
+{
+ "source": "Google Sheet: 가천대학교 대학원 논문 지도 현황 / 지도학생 목록",
+ "generated_at": "2026-11-04T18:40+09:00",
+ "advisor_email": "hoseo@gachon.ac.kr",
+ "kakao_url": "https://invite.kakao.com/tc/laAIAA2u8a",
+ "current": [
+  {
+   "name": "WEI MAN",
+   "name_ko": "위만",
+   "course": "박사",
+   "method": "학위 논문",
+   "advising": [
+    "2025-09-29",
+    "2025-10-29",
+    "2025-11-13",
+    "2025-12-01",
+    "2025-12-12",
+    "2026-10~11"
+   ],
+   "final": [],
+   "no": "1"
+  },
+  {
+   "name": "이호영",
+   "name_ko": "이호영",
+   "course": "박사",
+   "method": "학위 논문",
+   "advising": [],
+   "final": [],
+   "no": "2"
+  },
+  {
+   "name": "SEVJIDDORJ MYAGMARSUREN",
+   "name_ko": "미카",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2024-10-21",
+    "2024-11-6",
+    "2025-9-1",
+    "2026-3-6"
+   ],
+   "final": [],
+   "no": "3"
+  },
+  {
+   "name": "GANCHULUUN ANKHZAYA",
+   "name_ko": "자야",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "4"
+  },
+  {
+   "name": "LE THI HONG HA",
+   "name_ko": "홍하",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "5"
+  },
+  {
+   "name": "VU TIEU TRUC",
+   "name_ko": "우쭉",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-06-15"
+   ],
+   "final": [],
+   "no": "6"
+  },
+  {
+   "name": "VU THI LINH",
+   "name_ko": "린",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "7"
+  },
+  {
+   "name": "LE THI THU HIEN",
+   "name_ko": "히엔",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "8"
+  },
+  {
+   "name": "PHAM NGOC ANH",
+   "name_ko": "아잉",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-15",
+    "2026-03-20"
+   ],
+   "final": [],
+   "no": "9"
+  },
+  {
+   "name": "NGUYEN VIET TRUNG",
+   "name_ko": "쭝",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "10"
+  },
+  {
+   "name": "JARGALAN BOLORTUYA",
+   "name_ko": "토냐",
+   "course": "석사",
+   "method": "학위 논문",
+   "advising": [
+    "2026-09-03"
+   ],
+   "final": [],
+   "no": "11"
+  },
+  {
+   "name": "HAN THI THUY TRANG",
+   "name_ko": "튀짱",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "12"
+  },
+  {
+   "name": "NGUYEN THI DIEM QUYNH",
+   "name_ko": "디엠 꾸잉",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "13"
+  },
+  {
+   "name": "PHAM CHI CONG",
+   "name_ko": "치꽁",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "14"
+  },
+  {
+   "name": "PHUNG THI MINH ANH",
+   "name_ko": "민안",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "15"
+  },
+  {
+   "name": "TRAN THI DIEM",
+   "name_ko": "디엠",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "16"
+  },
+  {
+   "name": "PHAN THI YEN MINH",
+   "name_ko": "밍",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "17"
+  },
+  {
+   "name": "OTGONBAATAR MARAL",
+   "name_ko": "어미라",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "18"
+  },
+  {
+   "name": "BATDORJ MUNKHTSETSEG",
+   "name_ko": "제젝",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "19"
+  },
+  {
+   "name": "NGUYEN THI XUYEN",
+   "name_ko": "수연",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "20"
+  },
+  {
+   "name": "PHAM THI KHANH HA",
+   "name_ko": "한나",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "21"
+  },
+  {
+   "name": "HOANG THI DUYEN",
+   "name_ko": "유엔",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "22"
+  },
+  {
+   "name": "NGUYEN THI THU HA",
+   "name_ko": "수하",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [],
+   "final": [],
+   "no": "23"
+  }
+ ],
+ "graduates": [
+  {
+   "name": "DAMJINSUREN ANUJIN",
+   "name_ko": "아누진",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2025-6-7",
+    "2025-6-10",
+    "2025-6-12"
+   ],
+   "final": [
+    "2025-6-13"
+   ],
+   "grad_year": "2025",
+   "grad_note": "2025년8월"
+  },
+  {
+   "name": "TRINH THI TU UYEN",
+   "name_ko": "우엔",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2024-6-14",
+    "2025-1-22",
+    "2025-6-3"
+   ],
+   "final": [
+    "2025-6-13"
+   ],
+   "grad_year": "2025",
+   "grad_note": "2025년8월"
+  },
+  {
+   "name": "LE NGOC MINH THU",
+   "name_ko": "민트",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2025-3-4",
+    "2025-6-3",
+    "2025-6-12"
+   ],
+   "final": [
+    "2025-6-13"
+   ],
+   "grad_year": "2025",
+   "grad_note": "2025년8월"
+  },
+  {
+   "name": "NGUYEN HOANG ANH DUNG",
+   "name_ko": "중",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2025-3-10",
+    "2025-4-27",
+    "2025-5-5"
+   ],
+   "final": [
+    "2025-12-5"
+   ],
+   "grad_year": "2026",
+   "grad_note": "2026년2월"
+  },
+  {
+   "name": "SUNATULLAEVA MUSHTARIYBONU NEMATULLA KIZI",
+   "name_ko": "보누",
+   "course": "석사",
+   "method": "학위 논문",
+   "advising": [
+    "2025-4-9",
+    "2026-01-20",
+    "2026-02-11",
+    "2026-04-10"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "FAN BOSHUO",
+   "name_ko": "번반석",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-20",
+    "2026-04-17",
+    "2026-05-07"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "MAI THI THU TRANG",
+   "name_ko": "투짱",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2025-11-27",
+    "2026-04-07",
+    "2026-05-09"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "ZHUANG ZIHAN",
+   "name_ko": "장자함",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-18",
+    "2026-04-07",
+    "2026-04-15"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "HOANG SAM SONG THUONG",
+   "name_ko": "트엉",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-01-21",
+    "2026-03-17",
+    "2026-05-10"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "NGUYEN THI QUYNH",
+   "name_ko": "꾸인",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-01-20",
+    "2026-03-20",
+    "2026-04-28"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "VU HOANG NHU QUYNH",
+   "name_ko": "느꾸잉",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2025-12-13",
+    "2026-04-15",
+    "2026-04-24"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "NGUYEN THAO NGUYEN",
+   "name_ko": "응웬",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-04",
+    "2026-03-10",
+    "2026-04-20"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "LAI QUOC DAT",
+   "name_ko": "닷",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-10",
+    "2026-04-17",
+    "2026-06-02"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "HOANG NGOC HUYEN",
+   "name_ko": "후옌",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-02-20",
+    "2026-03-22",
+    "2026-05-04"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "PHAM CUONG QUOC",
+   "name_ko": "꾸옥",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-22",
+    "2026-04-29",
+    "2026-06-02"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  },
+  {
+   "name": "NGUYEN KIM NGOC",
+   "name_ko": "응옥",
+   "course": "석사",
+   "method": "비논문",
+   "advising": [
+    "2026-03-23",
+    "2026-04-27",
+    "2026-06-02"
+   ],
+   "final": [
+    "2026-06-15"
+   ],
+   "grad_year": "2026"
+  }
+ ]
+}

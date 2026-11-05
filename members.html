@@ -3,36 +3,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/style.css">
-<style>
-body{background:var(--bg)}
-.mb{max-width:1200px;margin:0 auto;padding:110px var(--pad) 60px}
-.mb h1{font-size:clamp(34px,6vw,68px);font-weight:600;letter-spacing:-.03em;word-break:keep-all}
-.mb .lead{color:var(--ink2);margin:14px 0 36px;max-width:680px;word-break:keep-all;line-height:1.7}
-.mb section{margin:0 0 48px}
-.mb h2{font-size:22px;font-weight:600;margin-bottom:16px;display:flex;gap:10px;align-items:baseline;word-break:keep-all}
-.mb h2 b{font-family:var(--mono);font-size:12px;color:var(--acc);font-weight:500}
-.mb h2 .n{font-family:var(--mono);font-size:13px;color:var(--mute);font-weight:400}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:22px 24px;line-height:1.75;word-break:keep-all}
-.card a{color:var(--acc)}
-.prof .nm{font-size:22px;font-weight:600;letter-spacing:-.02em}
-.prof .en{font-size:15px;color:var(--ink2);margin-top:2px}
-.prof .role{margin-top:10px;color:var(--ink2)}
-.prof .meta{margin-top:12px;font-size:14px;color:var(--ink2)}
-.prof .meta a{border-bottom:1px solid var(--line2)}
-.prof .meta a:hover{border-color:var(--acc)}
-.list{display:flex;flex-direction:column;gap:8px}
-.row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 18px}
-.row .nm{font-weight:600;font-size:15px}
-.row .ko{color:var(--ink2);font-size:13px}
-.row a.nm{color:inherit;border-bottom:1px dashed var(--line2)}
-.row a.nm:hover{color:var(--acc)}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
-.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;border:1px solid var(--line2);white-space:nowrap}
-.tag.phd{border-color:var(--acc);color:var(--acc)}
-.tag.grd{background:var(--bg2)}
-.meta{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:8px}
-@media(max-width:640px){.tags{margin-left:0}.row{align-items:flex-start}}
-</style></head><body>
+</head><body class="grad">
 <nav class="nav" id="nav"><div class="wrap g12">
   <a href="./" class="logo notranslate" translate="no"><i></i>Text Lab. 911</a>
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">MENU</button>
@@ -42,9 +13,12 @@ body{background:var(--bg)}
     <li><a href="./">대학원 지도</a></li>
     <li><a href="theses.html">지도학생 논문</a></li>
   </ul></div></nav>
-<main class="mb">
-  <h1>구성원</h1>
-  <p class="lead">서정호 교수와 지도학생입니다. 학생 목록은 지도 현황에 공개된 이름·과정·구분만 표시합니다.</p>
+<main class="page">
+  <header class="page-hero">
+    <p class="page-kicker">Members</p>
+    <h1>구성원</h1>
+    <p class="lead">서정호 교수와 지도학생입니다. 학생 목록은 지도 현황에 공개된 이름·과정·구분만 표시합니다.</p>
+  </header>
 
   <section id="advisor">
     <h2><b>01</b>지도교수</h2>
@@ -52,7 +26,7 @@ body{background:var(--bg)}
       <div class="nm notranslate" translate="no">서정호</div>
       <div class="en notranslate" translate="no">Jungho Suh</div>
       <div class="role">가천대학교 미디어커뮤니케이션학과 부교수</div>
-      <div class="meta notranslate" translate="no">
+      <div class="links notranslate" translate="no">
         ORCID <a href="https://orcid.org/0009-0004-1530-3749" target="_blank" rel="noopener">0009-0004-1530-3749</a><br>
         이메일 <a href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a>
       </div>
@@ -61,7 +35,7 @@ body{background:var(--bg)}
 
   <section id="students">
     <h2><b>02</b>지도학생 <span class="n" id="nAll"></span></h2>
-    <div id="out" class="list"></div>
+    <div id="out" class="m-list"></div>
     <p class="meta notranslate" translate="no" id="meta"></p>
   </section>
 </main>
@@ -72,25 +46,30 @@ const sid=n=>'s-'+n.toLowerCase().replace(/[^a-z0-9가-힣]+/g,'-');
 const courseRank=c=>c==='박사'?0:1;
 function row(s){
   const href='theses.html#'+sid(s.name);
+  const alum=s.group==='졸업생';
   const nm=`<a class="nm notranslate" translate="no" href="${href}">${esc(s.name)}</a>`;
   const ko=s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:'';
-  return `<div class="row">${nm}${ko}<div class="tags"><span class="tag ${s.course==='박사'?'phd':''}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':''}">${esc(s.group)}</span></div></div>`;
+  const courseCls=s.course==='박사'?'phd':'msc';
+  const groupCls=alum?'grd':'cur';
+  return `<div class="m-row ${alum?'alumni':''}">${nm}${ko}<div class="tags"><span class="tag ${courseCls}">${esc(s.course)}</span><span class="tag ${groupCls}">${esc(s.group)}</span></div></div>`;
 }
-function section(title, arr){
+function section(title, arr, alum){
   if(!arr.length) return '';
   const sorted=[...arr].sort((a,b)=>courseRank(a.course)-courseRank(b.course)||a.name.localeCompare(b.name));
-  return `<h2 style="font-size:18px;margin:28px 0 12px">${title} <span class="n notranslate" translate="no">${sorted.length}</span></h2>`+sorted.map(row).join('');
+  return `<div class="group-h ${alum?'alumni':''}"><span class="bar" aria-hidden="true"></span>${title} <span class="badge notranslate" translate="no">${sorted.length}</span></div>`+sorted.map(row).join('');
 }
 fetch('assets/advising.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
   const grads=(j.graduates||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'졸업생'}));
   const curs=(j.current||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'재학생'}));
   document.getElementById('nAll').textContent=(grads.length+curs.length)+'명';
-  document.getElementById('out').innerHTML=section('졸업생',grads)+section('재학생',curs);
+  document.getElementById('out').innerHTML=section('졸업생',grads,true)+section('재학생',curs,false);
   document.getElementById('meta').textContent='데이터 갱신: '+j.generated_at;
 });
 (function(){
   var nav=document.getElementById('nav'), mb=document.getElementById('menuBtn');
   if(mb) mb.onclick=function(){nav.classList.toggle('open');};
+  var onScroll=function(){if(!nav)return;nav.classList.toggle('scrolled', window.scrollY>8);};
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
 <script src="assets/lang.js"></script>

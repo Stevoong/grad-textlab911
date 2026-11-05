@@ -177,7 +177,10 @@ body.grad{background:var(--bg)}
 .tag.grd{background:var(--navy);border-color:var(--navy);color:#fff}
 .tag.cur{background:transparent;border-color:var(--acc);color:var(--acc)}
 .tag.grad-when{background:var(--opera);border-color:var(--opera);color:#fff;font-weight:600}
+.tag.inprog{display:inline-flex;align-items:center;gap:6px;background:var(--panel);border:1px solid var(--cerulean);color:var(--cerulean);font-weight:600}
+.tag.inprog::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cerulean);flex:0 0 auto;box-shadow:0 0 0 2px var(--cerulean-soft)}
 .tag.method,.tag.non{border-color:rgba(0,123,167,.35);color:var(--cerulean);background:var(--cerulean-soft)}
+.ab-note{font-size:12.5px;color:var(--cerulean);margin:8px 0 2px;line-height:1.5;padding:6px 10px;border-left:2px solid var(--cerulean);background:var(--cerulean-soft);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
 
 .meta{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:10px}
 

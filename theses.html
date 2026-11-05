@@ -22,6 +22,7 @@
   <div class="fl">
     <div class="seg" id="fG"><button data-v="" class="on">전체</button><button data-v="졸업생">졸업생</button><button data-v="재학생">재학생</button></div>
     <div class="seg" id="fC"><button data-v="" class="on">전체 과정</button><button data-v="석사">석사</button><button data-v="박사">박사</button></div>
+    <div class="seg" id="fS"><button data-v="" class="on">전체 상태</button><button data-v="inprog">연구 진행 중</button></div>
     <input id="q" type="search" placeholder="이름·제목·키워드 검색" aria-label="검색">
     <span class="cnt notranslate" translate="no" id="cnt"></span>
   </div>
@@ -32,9 +33,9 @@
 <script>
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const sid=n=>'s-'+n.toLowerCase().replace(/[^a-z0-9가-힣]+/g,'-');
-let D=[],G='',C='';
+let D=[],G='',C='',S='';
 const nameH=s=>`<span class="nm notranslate" translate="no">${esc(s.name)}</span>${s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:''}`;
-const tagsH=s=>`<div class="tags"><span class="tag ${s.course==='박사'?'phd':'msc'}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':'cur'}">${esc(s.group)}</span>${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}<span class="tag method">${esc(s.method)}</span></div>`;
+const tagsH=s=>`<div class="tags"><span class="tag ${s.course==='박사'?'phd':'msc'}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':'cur'}">${esc(s.group)}</span>${s.group==='재학생'?`<span class="tag inprog" data-status="inprog">연구 진행 중</span>`:''}${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}<span class="tag method">${esc(s.method)}</span></div>`;
 const titlesH=s=>s.titles.map(t=>{
   const note=t.note||t.kind||'';
   const en=t.text_en||'';
@@ -44,15 +45,22 @@ const titlesH=s=>s.titles.map(t=>{
 }).join('');
 function methodH(s){return s.methodology?`<div class="th-block"><h3>연구방법론</h3><div class="th-method">${esc(s.methodology)}</div></div>`:''}
 function modelH(s){if(!s.model||!window.GradResearchModel)return'';const inner=GradResearchModel.render(s.model);return inner?`<div class="th-block"><h3>${s.model.type==='flow'?'연구 절차':'연구 모형'}</h3>${inner}</div>`:''}
-function row(s){return `<article class="th-row ${s.group==='졸업생'?'alumni':''}" id="${sid(s.name)}"><div>${nameH(s)}</div>${tagsH(s)}${s.titles.length?titlesH(s)+(s.summary?`<div class="ab">${esc(s.summary)}</div>`:'')+methodH(s)+modelH(s):'<div class="pend">논문 제목 준비 중</div>'}</article>`}
+function row(s){const inprog=s.group==='재학생';const note=(inprog&&s.summary)?`<p class="ab-note">현재 진행 중인 연구로, 내용과 결과는 변경될 수 있다.</p>`:'';return `<article class="th-row ${s.group==='졸업생'?'alumni':''}" id="${sid(s.name)}" data-status="${inprog?'inprog':'done'}"><div>${nameH(s)}</div>${tagsH(s)}${s.titles.length?titlesH(s)+note+(s.summary?`<div class="ab">${esc(s.summary)}</div>`:'')+methodH(s)+modelH(s):'<div class="pend">논문 제목 준비 중</div>'}</article>`}
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
-  const f=D.filter(s=>(!G||s.group===G)&&(!C||s.course===C)&&(!q||[s.name,s.name_ko,s.summary,s.methodology||'',...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase().includes(q)));
+  const f=D.filter(s=>{
+    if(G&&s.group!==G)return false;
+    if(C&&s.course!==C)return false;
+    if(S==='inprog'&&s.group!=='재학생')return false;
+    const hay=[s.name,s.name_ko,s.summary,s.methodology||'',s.group==='재학생'?'연구 진행 중':'',...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase();
+    if(q&&!hay.includes(q))return false;
+    return true;
+  });
   let h='';for(const g of ['졸업생','재학생']){const a=f.filter(s=>s.group===g);if(!a.length)continue;const cls=g==='졸업생'?'g-grad':'g-cur';h+=`<h2 class="g ${cls}"><span class="bar" aria-hidden="true"></span>${g} <span class="badge notranslate" translate="no">${a.length}</span></h2><div class="stack">${a.map(row).join('')}</div>`}
   document.getElementById('out').innerHTML=h||'<p class="empty">검색 결과가 없습니다.</p>';
   document.getElementById('cnt').textContent=f.length+' / '+D.length;
 }
-for(const [id,set] of [['fG',v=>G=v],['fC',v=>C=v]])document.getElementById(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b));set(b.dataset.v);render()};
+for(const [id,set] of [['fG',v=>G=v],['fC',v=>C=v],['fS',v=>S=v]])document.getElementById(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b));set(b.dataset.v);render()};
 document.getElementById('q').oninput=render;
 fetch('assets/theses.json').then(r=>r.json()).then(j=>{D=j.students;render();document.getElementById('meta').textContent='데이터 갱신: '+j.generated_at;
   if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el){el.scrollIntoView({block:'center'});el.classList.add('jump')}}});

@@ -51,7 +51,7 @@ function row(s){
   const ko=s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:'';
   const courseCls=s.course==='박사'?'phd':'msc';
   const groupCls=alum?'grd':'cur';
-  return `<div class="m-row ${alum?'alumni':''}">${nm}${ko}<div class="tags"><span class="tag ${courseCls}">${esc(s.course)}</span><span class="tag ${groupCls}">${esc(s.group)}</span>${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}</div></div>`;
+  return `<div class="m-row ${alum?'alumni':''}" data-status="${alum?'done':'inprog'}">${nm}${ko}<div class="tags"><span class="tag ${courseCls}">${esc(s.course)}</span><span class="tag ${groupCls}">${esc(s.group)}</span>${alum?'':`<span class="tag inprog">연구 진행 중</span>`}${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}</div></div>`;
 }
 function section(title, arr, alum){
   if(!arr.length) return '';

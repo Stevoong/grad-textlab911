@@ -361,3 +361,6 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
   .rm-flow-arrow{display:none}
   .rm-flow-step{max-width:none;width:100%}
 }
+
+.th-method{white-space:normal;line-height:1.65;font-size:14px}
+.th-model-note{margin-top:10px;font-size:14px;line-height:1.65;color:var(--muted,#555)}

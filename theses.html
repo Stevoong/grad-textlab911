@@ -46,8 +46,8 @@ const titlesH=s=>s.titles.map(t=>{
     (en?`<div class="ti-en notranslate" translate="no">${esc(en)}</div>`:'')+
     `<div class="ti-o notranslate" translate="no">원문: ${esc(t.text)}</div>`;
 }).join('');
-function methodH(s){return s.methodology?`<div class="th-block"><h3>연구방법론</h3><div class="th-method">${esc(s.methodology)}</div></div>`:''}
-function modelH(s){if(!s.model||!window.GradResearchModel)return'';const inner=GradResearchModel.render(s.model);return inner?`<div class="th-block"><h3>${s.model.type==='flow'?'연구 절차':'연구 모형'}</h3>${inner}</div>`:''}
+function methodH(s){if(!s.methodology)return'';const body=esc(s.methodology).replace(/\n/g,'<br>');return `<div class="th-block"><h3>연구방법론</h3><div class="th-method">${body}</div></div>`}
+function modelH(s){if(!s.model||!window.GradResearchModel)return'';const inner=GradResearchModel.render(s.model);if(!inner)return'';const prose=s.model_note?`<p class="th-model-note">${esc(s.model_note)}</p>`:'';return `<div class="th-block"><h3>${s.model.type==='flow'?'연구 절차':'연구 모형'}</h3>${inner}${prose}</div>`}
 function row(s){const inprog=s.group==='재학생';const note=(inprog&&s.summary)?`<p class="ab-note">현재 진행 중인 연구로, 내용과 결과는 변경될 수 있다.</p>`:'';return `<article class="th-row ${s.group==='졸업생'?'alumni':''}" id="${sid(s.name)}" data-status="${inprog?'inprog':'done'}"><div>${nameH(s)}</div>${tagsH(s)}${s.titles.length?titlesH(s)+note+(s.summary?`<div class="ab">${esc(s.summary)}</div>`:'')+methodH(s)+modelH(s):'<div class="pend">논문 제목 준비 중</div>'}</article>`}
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
@@ -55,7 +55,7 @@ function render(){
     if(G&&s.group!==G)return false;
     if(C&&s.course!==C)return false;
     if(S==='inprog'&&s.group!=='재학생')return false;
-    const hay=[s.name,s.name_ko,s.summary,s.methodology||'',s.group==='재학생'?'연구 진행 중':'',...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase();
+    const hay=[s.name,s.name_ko,s.summary,s.methodology||'',s.model_note||'',s.group==='재학생'?'연구 진행 중':'',...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase();
     if(q&&!hay.includes(q))return false;
     return true;
   });

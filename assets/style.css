@@ -379,3 +379,5 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .about-chips li{padding:7px 12px;border:1px solid rgba(0,123,167,.35);background:var(--cerulean-soft);color:var(--cerulean);border-radius:var(--radius-pill);font-size:13px;font-weight:500}
 .about-note{font-size:13px;color:var(--mute);line-height:1.6;margin:10px 0 0}
 .about-links-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+
+.pub-sum{margin:.35rem 0 .2rem;font-size:.92rem;line-height:1.55;color:var(--ink2)}

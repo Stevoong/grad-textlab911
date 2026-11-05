@@ -55,7 +55,7 @@ function render(){
 for(const [id,set] of [['fG',v=>G=v],['fC',v=>C=v]])document.getElementById(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x===b));set(b.dataset.v);render()};
 document.getElementById('q').oninput=render;
 fetch('assets/theses.json').then(r=>r.json()).then(j=>{D=j.students;render();document.getElementById('meta').textContent='데이터 갱신: '+j.generated_at;
-  if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el){el.scrollIntoView({block:'center'});el.classList.add('hl')}}});
+  if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el){el.scrollIntoView({block:'center'});el.classList.add('jump')}}});
 (function(){
   var nav=document.getElementById('nav'), mb=document.getElementById('menuBtn');
   if(mb) mb.onclick=function(){nav.classList.toggle('open');};

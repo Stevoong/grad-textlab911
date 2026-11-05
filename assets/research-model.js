@@ -327,8 +327,9 @@
 
     arrowMarker(svg, 'rm-ah', '#3d4a5c');
     arrowMarker(svg, 'rm-ah-acc', '#2440d8');
+    arrowMarker(svg, 'rm-ah-opera', '#E4005A');
     arrowMarker(svg, 'rm-ah-amber', '#9a6b12');
-    arrowMarker(svg, 'rm-ah-teal', '#0f766e');
+    arrowMarker(svg, 'rm-ah-teal', '#007BA7');
 
     var paths = model.paths || [];
     var labelCands = [];
@@ -422,7 +423,7 @@
         var mid = isArc
           ? { x: mx, y: my - (bulge > 0 ? 8 : -8) }
           : midpoint(start2, end);
-        labelCands.push({ x: mid.x, y: mid.y - 6, label: p.label, color: '#2440d8', key: p.label + ':' + pi });
+        labelCands.push({ x: mid.x, y: mid.y - 6, label: p.label, color: '#E4005A', key: p.label + ':' + pi });
         drawn++;
         return;
       }
@@ -477,7 +478,7 @@
           x: mid.x,
           y: mid.y,
           label: lab,
-          color: isDash ? '#2440d8' : '#2440d8',
+          color: '#E4005A',
           key: lab + ':' + pi + ':' + fi
         });
         drawn++;
@@ -491,7 +492,7 @@
       t.setAttribute('y', L.y);
       t.setAttribute('text-anchor', 'middle');
       t.setAttribute('class', 'rm-svg-h');
-      t.setAttribute('fill', L.color || '#2440d8');
+      t.setAttribute('fill', L.color || '#E4005A');
       t.textContent = L.label;
       svg.appendChild(t);
     });

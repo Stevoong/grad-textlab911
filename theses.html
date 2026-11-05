@@ -34,7 +34,9 @@
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const sid=n=>'s-'+n.toLowerCase().replace(/[^a-z0-9가-힣]+/g,'-');
 let D=[],G='',C='',S='';
-const nameH=s=>`<span class="nm notranslate" translate="no">${esc(s.name)}</span>${s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:''}`;
+const yyH=s=>s.entry_yy?`<span class="yy-badge notranslate" translate="no" title="${esc(s.entry_yy)}학번">${esc(s.entry_yy)}학번</span>`:'';
+const flagH=s=>s.cc?`<img class="flag" src="assets/flags/${esc(s.cc)}.svg" width="18" height="18" alt="" title="${esc(s.nationality||'')}" aria-label="${esc(s.nationality||'')}" loading="lazy" decoding="async">`:'';
+const nameH=s=>`<span class="name-line">${yyH(s)}${flagH(s)}<span class="nm notranslate" translate="no">${esc(s.name)}</span>${s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:''}</span>`;
 const tagsH=s=>`<div class="tags"><span class="tag ${s.course==='박사'?'phd':'msc'}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':'cur'}">${esc(s.group)}</span>${s.group==='재학생'?`<span class="tag inprog" data-status="inprog">연구 진행 중</span>`:''}${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}<span class="tag method">${esc(s.method)}</span></div>`;
 const titlesH=s=>s.titles.map(t=>{
   const note=t.note||t.kind||'';

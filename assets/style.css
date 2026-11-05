@@ -7,10 +7,10 @@
  * --acc-soft   rgba(36,64,216,.08)
  * --cerulean   #007BA7  Cerulean Blue — secondary accent (kickers, link hover, mediator role, method tags)
  * --cerulean-soft rgba(0,123,167,.10)
- * --opera      #E4005A  Opera Red — rare strongest callouts only:
- *                         .tag.grad-when (졸업 시기), SVG/path H-labels (.rm-svg-h / .rm-paths .rm-h),
- *                         .card.accent left rail / border, key notice chrome
- * --cerulean also: .tag.inprog (연구 진행 중 — outline pill + dot; NOT opera)
+ * --opera      #E4005A  Opera Red — ONLY .tag.grad-when (졸업 시기) + SVG/path H-labels
+ *                         (NOT advisor/notice/content cards — those use --acc)
+ * --cerulean also: .tag.inprog (연구 진행 중 — outline pill + dot)
+ * Flags: assets/flags/{cc}.svg via .flag (cute ~18px rounded); entry year via .yy-badge
  * --opera-soft rgba(228,0,90,.10)
  * --hl         #E8FF3A  Fluorescent highlighter marker background (.hl on in-body emphasis)
  * --navy       #0f1f4d  Hierarchy / alumni / IV role
@@ -162,7 +162,7 @@ body.grad{background:var(--bg)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;line-height:1.75;word-break:keep-all;box-shadow:var(--shadow-sm)}
 .card a{color:var(--acc)}
 .card a:hover{color:var(--cerulean)}
-.card.accent{border-color:var(--opera);background:var(--opera-soft);box-shadow:inset 4px 0 0 var(--opera)}
+.card.accent{border-color:rgba(36,64,216,.35);background:var(--acc-soft);box-shadow:inset 4px 0 0 var(--acc)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 .btn-th{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--radius-pill);background:var(--acc);color:#fff;font-weight:600;font-size:14px;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease),background .25s}
@@ -181,6 +181,10 @@ body.grad{background:var(--bg)}
 .tag.inprog::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cerulean);flex:0 0 auto;box-shadow:0 0 0 2px var(--cerulean-soft)}
 .tag.method,.tag.non{border-color:rgba(0,123,167,.35);color:var(--cerulean);background:var(--cerulean-soft)}
 .ab-note{font-size:12.5px;color:var(--cerulean);margin:8px 0 2px;line-height:1.5;padding:6px 10px;border-left:2px solid var(--cerulean);background:var(--cerulean-soft);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.name-line{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:100%}
+.yy-badge{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.02em;padding:2px 8px;border-radius:var(--radius-pill);border:1px solid var(--acc);color:var(--acc);background:var(--panel);line-height:1.3;white-space:nowrap;box-shadow:var(--shadow-sm)}
+.flag{width:18px;height:18px;border-radius:5px;object-fit:cover;border:1px solid rgba(15,31,77,.12);box-shadow:0 1px 3px rgba(15,31,77,.12);flex:0 0 auto;display:inline-block;vertical-align:middle;background:var(--bg2)}
+.m-row .name-line,.th-row .name-line{margin:0}
 
 .meta{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:10px}
 

@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="assets/style.css">
 <style>
 body{background:var(--bg)}
-.th{max-width:860px;margin:0 auto;padding:110px var(--pad) 60px}
+.th{max-width:1200px;margin:0 auto;padding:110px var(--pad) 60px}
 .th h1{font-size:clamp(34px,6vw,68px);font-weight:600;letter-spacing:-.03em}
 .th .lead{color:var(--ink2);margin:14px 0 28px;max-width:680px;word-break:keep-all;line-height:1.7}
 .fl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
@@ -27,25 +27,39 @@ h2.g{font-size:20px;font-weight:600;margin:32px 0 14px}
 .ti-en{font-size:13.5px;line-height:1.55;color:var(--mute);font-style:italic;margin-top:-2px}
 .ti-o{display:none;font-size:12px;color:var(--mute);line-height:1.5}
 html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
-.ab{font-size:14.5px;color:var(--ink);line-height:1.85;margin-top:6px;white-space:pre-wrap}
+.ab{font-size:14.5px;color:var(--ink);line-height:1.85;margin-top:6px;white-space:pre-wrap;max-width:760px}
 .pend{color:var(--mute);font-size:14px;padding:4px 0}
 .empty{color:var(--mute);padding:20px 0}
+.meta{font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:8px}
 @media(max-width:640px){.row{padding:18px 16px}.ti{font-size:16.5px}}
 </style></head><body>
 <nav class="nav" id="nav"><div class="wrap g12">
   <a href="https://textlab911.com/" class="logo notranslate" translate="no"><i></i>Text Lab. 911</a>
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">MENU</button>
   <ul>
-    <li><a href="https://textlab911.com/#tools">개발도구</a></li><li><a href="https://textlab911.com/#about">소개</a></li>
-    <li><a href="https://textlab911.com/#research">연구</a></li><li><a href="https://textlab911.com/#members">구성원</a></li>
-    <li><a href="https://textlab911.com/">대학원</a></li><li><a href="./">대학원 지도</a></li><li><a href="theses.html" class="active">지도학생 논문</a></li>
+    <li><a href="https://textlab911.com/#tools">개발도구</a></li>
+    <li><a href="https://textlab911.com/#about">소개</a></li>
+    <li><a href="https://textlab911.com/#works">제작 Works</a></li>
+    <li><a href="https://textlab911.com/#research">연구</a></li>
+    <li><a href="https://textlab911.com/#books">저서</a></li>
+    <li><a href="https://textlab911.com/#rnd">연구개발</a></li>
+    <li class="has-dd">
+      <button type="button" class="dd-btn active" aria-expanded="false" aria-haspopup="true">대학원 <span class="chev" aria-hidden="true"></span></button>
+      <ul class="dd-menu" role="menu">
+        <li role="none"><a role="menuitem" href="https://textlab911.com/">대학원</a></li>
+        <li role="none"><a role="menuitem" href="https://textlab911.com/#members">구성원</a></li>
+        <li role="none"><a role="menuitem" href="./">대학원 지도</a></li>
+        <li role="none"><a role="menuitem" href="theses.html" class="active">지도학생 논문</a></li>
+      </ul>
+    </li>
     <li><a href="https://textlab911.com/#contact">연락</a></li>
   </ul></div></nav>
 <main class="th">
+  <nav class="subnav" aria-label="대학원 카테고리"><a href="https://textlab911.com/">대학원</a><a href="https://textlab911.com/#members">구성원</a><a href="./">대학원 지도</a><a href="theses.html" class="on">지도학생 논문</a></nav>
   <h1>지도학생 논문</h1>
-  <p class="lead">서정호 교수 지도학생(재학생·졸업생)의 논문 제목(한글·영문)과 연구 초록입니다. 제목이 확정된 연구만 초록을 수록하며, 그 외는 「논문 제목 준비 중」으로 표시합니다.</p>
+  <p class="lead">서정호 교수 지도학생(졸업생·재학생)의 논문 제목(한글·영문)과 연구 초록입니다. 제목이 확정된 연구만 초록을 수록하며, 그 외는 「논문 제목 준비 중」으로 표시합니다.</p>
   <div class="fl">
-    <div class="seg" id="fG"><button data-v="" class="on">전체</button><button data-v="재학생">재학생</button><button data-v="졸업생">졸업생</button></div>
+    <div class="seg" id="fG"><button data-v="" class="on">전체</button><button data-v="졸업생">졸업생</button><button data-v="재학생">재학생</button></div>
     <div class="seg" id="fC"><button data-v="" class="on">전체 과정</button><button data-v="석사">석사</button><button data-v="박사">박사</button></div>
     <input id="q" type="search" placeholder="이름·제목·키워드 검색" aria-label="검색">
     <span class="cnt notranslate" translate="no" id="cnt"></span>
@@ -71,7 +85,7 @@ function row(s){return `<article class="row" id="${sid(s.name)}"><div>${nameH(s)
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
   const f=D.filter(s=>(!G||s.group===G)&&(!C||s.course===C)&&(!q||[s.name,s.name_ko,s.summary,...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase().includes(q)));
-  let h='';for(const g of ['재학생','졸업생']){const a=f.filter(s=>s.group===g);if(!a.length)continue;h+=`<h2 class="g">${g} <span class="small notranslate" translate="no">${a.length}</span></h2><div class="stack">${a.map(row).join('')}</div>`}
+  let h='';for(const g of ['졸업생','재학생']){const a=f.filter(s=>s.group===g);if(!a.length)continue;h+=`<h2 class="g">${g} <span class="small notranslate" translate="no">${a.length}</span></h2><div class="stack">${a.map(row).join('')}</div>`}
   document.getElementById('out').innerHTML=h||'<p class="empty">검색 결과가 없습니다.</p>';
   document.getElementById('cnt').textContent=f.length+' / '+D.length;
 }
@@ -79,7 +93,26 @@ for(const [id,set] of [['fG',v=>G=v],['fC',v=>C=v]])document.getElementById(id).
 document.getElementById('q').oninput=render;
 fetch('assets/theses.json').then(r=>r.json()).then(j=>{D=j.students;render();document.getElementById('meta').textContent='데이터 갱신: '+j.generated_at;
   if(location.hash){const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el){el.scrollIntoView({block:'center'});el.classList.add('hl')}}});
-const nav=document.getElementById('nav'),mb=document.getElementById('menuBtn');mb&&(mb.onclick=()=>nav.classList.toggle('open'));
+
+(function(){
+  var nav=document.getElementById('nav');
+  var mb=document.getElementById('menuBtn');
+  if(mb) mb.onclick=function(){nav.classList.toggle('open');};
+  document.querySelectorAll('.has-dd').forEach(function(li){
+    var btn=li.querySelector('.dd-btn');
+    if(!btn) return;
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      var open=li.classList.contains('open');
+      document.querySelectorAll('.has-dd.open').forEach(function(x){if(x!==li)x.classList.remove('open');});
+      li.classList.toggle('open',!open);
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.has-dd')) document.querySelectorAll('.has-dd.open').forEach(function(x){x.classList.remove('open');});
+  });
+})();
+
 </script>
 <script src="assets/lang.js"></script>
 </body></html>

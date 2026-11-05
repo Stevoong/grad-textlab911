@@ -36,6 +36,28 @@
       .replace(/e-?wom/g, 'ewom');
   }
 
+  var ROLE_KO = {
+    iv: '독립변수',
+    med: '매개변수',
+    dv: '종속변수',
+    mod: '조절변수',
+    ctrl: '통제변수'
+  };
+
+  function rolePill(role) {
+    var lab = ROLE_KO[role];
+    if (!lab) return '';
+    return '<span class="rm-role rm-role-' + role + '">' + esc(lab) + '</span>';
+  }
+
+  function roleLegend(roles) {
+    if (!roles || !roles.length) return '';
+    return '<div class="rm-legend" aria-label="변수 역할">' + roles.map(function (role) {
+      return '<span class="rm-leg-item rm-leg-' + role + '"><i class="rm-swatch" aria-hidden="true"></i>' +
+        esc(ROLE_KO[role]) + '</span>';
+    }).join('') + '</div>';
+  }
+
   function boxHtml(item, role, id) {
     var label = itemLabel(item);
     var sub = itemSub(item);
@@ -44,9 +66,11 @@
       (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div>';
   }
 
-  function colHtml(items, role, prefix) {
+  function colHtml(items, role, prefix, withHeader) {
     if (!items.length) return '';
+    var head = withHeader ? rolePill(role) : '';
     return '<div class="rm-col rm-col-' + role + '" data-rm-col="' + role + '">' +
+      head +
       items.map(function (lab, i) {
         return boxHtml(lab, role, prefix + i);
       }).join('') + '</div>';
@@ -70,7 +94,8 @@
     steps.forEach(function (st, i) {
       if (i) html += '<div class="rm-flow-arrow" aria-hidden="true"></div>';
       var lab = typeof st === 'string' ? st : (st.label || st.name || '');
-      var sub = typeof st === 'object' && st.sub ? '<small>' + esc(st.sub) + '</small>' : '';
+      var subTxt = typeof st === 'object' ? itemSub(st) : '';
+      var sub = subTxt ? '<small>' + esc(subTxt) + '</small>' : '';
       html += '<div class="rm-flow-step"><span class="rm-flow-n">' + (i + 1) + '</span>' +
         '<span class="rm-lab">' + esc(lab) + '</span>' + sub + '</div>';
     });
@@ -99,27 +124,37 @@
     html += '<svg class="rm-svg" aria-hidden="true"></svg>';
 
     if (mods.length) {
-      html += '<div class="rm-mods">' + mods.map(function (lab, i) {
-        return boxHtml(lab, 'mod', 'mod' + i);
-      }).join('') + '</div>';
+      html += '<div class="rm-mods">' +
+        '<div class="rm-mod-wrap">' + rolePill('mod') +
+        mods.map(function (lab, i) {
+          return boxHtml(lab, 'mod', 'mod' + i);
+        }).join('') + '</div></div>';
     }
 
     html += '<div class="rm-stage">';
-    html += colHtml(iv, 'iv', 'iv');
+    html += colHtml(iv, 'iv', 'iv', true);
     meds.forEach(function (col, mi) {
-      html += colHtml(col, 'med', 'med' + mi + '_');
+      /* header on every mediator column — all are 매개변수 in source */
+      html += colHtml(col, 'med', 'med' + mi + '_', true);
     });
-    html += colHtml(dv, 'dv', 'dv');
+    html += colHtml(dv, 'dv', 'dv', true);
     html += '</div>';
 
     if (ctrls.length) {
-      html += '<div class="rm-ctrls"><span class="rm-ctrl-k">Controls</span>' +
+      html += '<div class="rm-ctrls">' + rolePill('ctrl') +
         ctrls.map(function (lab, i) {
           return boxHtml(lab, 'ctrl', 'ctrl' + i);
         }).join('') + '</div>';
     }
     html += '</div>'; /* diagram */
 
+    var present = [];
+    if (iv.length) present.push('iv');
+    if (meds.length) present.push('med');
+    if (mods.length) present.push('mod');
+    if (dv.length) present.push('dv');
+    if (ctrls.length) present.push('ctrl');
+    html += roleLegend(present);
     html += pathListHtml(paths);
     html += '</div>';
 
@@ -461,6 +496,36 @@
       svg.appendChild(t);
     });
 
+    svg.setAttribute('overflow', 'visible');
+
+    /* Expand diagram padding so arcs/H-labels never clip the SVG viewBox */
+    try {
+      var bb = svg.getBBox();
+      var pad = 14;
+      var needTop = Math.max(0, pad - bb.y);
+      var needBot = Math.max(0, (bb.y + bb.height + pad) - h);
+      var needLeft = Math.max(0, pad - bb.x);
+      var needRight = Math.max(0, (bb.x + bb.width + pad) - w);
+      var stage = diagram.querySelector('.rm-stage');
+      if (stage) {
+        var needW = Math.ceil(stage.scrollWidth + 24);
+        if (needW > (parseInt(diagram.style.minWidth, 10) || 0) && needW > 560) {
+          diagram.style.minWidth = needW + 'px';
+        }
+      }
+      if ((needTop > 0.5 || needBot > 0.5 || needLeft > 0.5 || needRight > 0.5) &&
+          host.getAttribute('data-rm-fit') !== '1') {
+        host.setAttribute('data-rm-fit', '1');
+        var cs = window.getComputedStyle(diagram);
+        diagram.style.paddingTop = (parseFloat(cs.paddingTop) || 0) + needTop + 'px';
+        diagram.style.paddingBottom = (parseFloat(cs.paddingBottom) || 0) + needBot + 'px';
+        diagram.style.paddingLeft = (parseFloat(cs.paddingLeft) || 0) + needLeft + 'px';
+        diagram.style.paddingRight = (parseFloat(cs.paddingRight) || 0) + needRight + 'px';
+        return layoutOne(host);
+      }
+    } catch (e) { /* getBBox can throw if not rendered */ }
+    host.removeAttribute('data-rm-fit');
+
     return { drawn: drawn, labels: placed.map(function (L) { return L.label; }) };
   }
 
@@ -468,6 +533,16 @@
     var hosts = document.querySelectorAll('.rm-host[data-rm-json]');
     var report = [];
     hosts.forEach(function (h) {
+      h.removeAttribute('data-rm-fit');
+      var diagram = h.querySelector('.rm-diagram');
+      if (diagram) {
+        diagram.style.paddingTop = '';
+        diagram.style.paddingBottom = '';
+        diagram.style.paddingLeft = '';
+        diagram.style.paddingRight = '';
+        /* keep minWidth if content needs it — cleared then recomputed */
+        diagram.style.minWidth = '';
+      }
       report.push(layoutOne(h));
     });
     return report;

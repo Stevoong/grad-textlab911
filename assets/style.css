@@ -283,6 +283,7 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .rm-line{display:block;height:2px;width:36px;background:var(--ink2);opacity:.55}
 .rm-head{width:0;height:0;border:5px solid transparent;border-left-color:var(--ink2);opacity:.7;margin-left:-2px}
 .rm-h{font-family:var(--mono);font-size:10px;color:var(--acc);position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.rm-paths .rm-h,.rm-mod-wrap .rm-h{position:static;transform:none;top:auto;left:auto;margin-right:4px;font-weight:500}
 .rm-ctrls{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}
 .rm-ctrl-k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-right:4px}
 .rm-paths{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}

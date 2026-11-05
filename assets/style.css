@@ -251,3 +251,55 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
   .ti{font-size:16.5px}
 }
 @media(max-width:420px){.nav .logo{white-space:nowrap}}
+
+/* ---- thesis methodology + research model ---- */
+.th-block{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.th-block h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);font-weight:500;margin:0 0 8px}
+.th-method{font-size:14px;color:var(--ink2);line-height:1.75;text-align:justify;word-break:keep-all;white-space:pre-wrap}
+.rm{margin-top:4px;padding:14px;background:linear-gradient(180deg,var(--acc-soft),transparent 48%),var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto}
+.rm-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.rm-note{font-size:12px;color:var(--mute);margin:0 0 10px;line-height:1.55}
+.rm-path{min-width:520px}
+.rm-mods{display:flex;justify-content:center;gap:16px;margin-bottom:4px}
+.rm-mod-wrap{display:flex;flex-direction:column;align-items:center}
+.rm-mod-arrow{width:0;height:18px;border-left:2px dashed var(--amber);position:relative;margin:2px 0 0}
+.rm-mod-arrow::after{content:"";position:absolute;left:-5px;bottom:-1px;border:5px solid transparent;border-top-color:var(--amber)}
+.rm-row{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:nowrap}
+.rm-col{display:flex;flex-direction:column;gap:8px;min-width:110px}
+.rm-box{border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:8px 10px;background:#fff;text-align:center;box-shadow:var(--shadow-sm);max-width:160px}
+.rm-box .rm-lab{display:block;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--ink);word-break:keep-all}
+.rm-box small{display:block;margin-top:3px;font-size:10.5px;color:var(--mute);line-height:1.3}
+.rm-iv{border-color:var(--navy);background:var(--navy-soft)}
+.rm-iv .rm-lab{color:var(--navy)}
+.rm-med{border-color:var(--teal);background:var(--teal-soft)}
+.rm-med .rm-lab{color:var(--teal)}
+.rm-dv{border-color:var(--acc);background:var(--acc-soft)}
+.rm-dv .rm-lab{color:var(--acc-2)}
+.rm-mod{border-color:var(--amber);background:rgba(154,107,18,.08)}
+.rm-mod .rm-lab{color:var(--amber)}
+.rm-ctrl{border-style:dashed;border-color:var(--line2);background:#fafbfc;padding:5px 8px}
+.rm-ctrl .rm-lab{font-size:11px;font-weight:500;color:var(--mute)}
+.rm-arrow{display:flex;align-items:center;gap:4px;flex:0 0 auto;min-width:48px;position:relative}
+.rm-line{display:block;height:2px;width:36px;background:var(--ink2);opacity:.55}
+.rm-head{width:0;height:0;border:5px solid transparent;border-left-color:var(--ink2);opacity:.7;margin-left:-2px}
+.rm-h{font-family:var(--mono);font-size:10px;color:var(--acc);position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.rm-ctrls{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}
+.rm-ctrl-k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-right:4px}
+.rm-paths{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.rm-paths li{font-size:12px;color:var(--ink2)}
+.rm-paths em{color:var(--mute);font-style:normal;margin-left:4px}
+.rm-flow{display:flex;align-items:stretch;gap:6px;flex-wrap:wrap}
+.rm-flow-step{flex:1 1 120px;min-width:110px;max-width:200px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;box-shadow:var(--shadow-sm)}
+.rm-flow-n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;font-family:var(--mono);font-size:11px;margin-bottom:6px}
+.rm-flow-step .rm-lab{display:block;font-size:12.5px;font-weight:600;color:var(--navy);line-height:1.4;word-break:keep-all}
+.rm-flow-step small{display:block;margin-top:4px;font-size:11px;color:var(--mute);line-height:1.4}
+.rm-flow-arrow{width:18px;align-self:center;height:2px;background:var(--acc);position:relative;flex:0 0 18px}
+.rm-flow-arrow::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left-color:var(--acc)}
+@media(max-width:700px){
+  .rm-path{min-width:0}
+  .rm-row{flex-direction:column;align-items:stretch}
+  .rm-arrow{transform:rotate(90deg);min-width:28px;justify-content:center;margin:4px auto}
+  .rm-col{align-items:center}
+  .rm-box{max-width:none;width:100%}
+  .rm-flow-arrow{display:none}
+}

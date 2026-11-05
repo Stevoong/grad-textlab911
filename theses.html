@@ -42,10 +42,12 @@ const titlesH=s=>s.titles.map(t=>{
     (en?`<div class="ti-en notranslate" translate="no">${esc(en)}</div>`:'')+
     `<div class="ti-o notranslate" translate="no">원문: ${esc(t.text)}</div>`;
 }).join('');
-function row(s){return `<article class="th-row ${s.group==='졸업생'?'alumni':''}" id="${sid(s.name)}"><div>${nameH(s)}</div>${tagsH(s)}${s.titles.length?titlesH(s)+(s.summary?`<div class="ab">${esc(s.summary)}</div>`:''):'<div class="pend">논문 제목 준비 중</div>'}</article>`}
+function methodH(s){return s.methodology?`<div class="th-block"><h3>연구방법론</h3><div class="th-method">${esc(s.methodology)}</div></div>`:''}
+function modelH(s){if(!s.model||!window.GradResearchModel)return'';const inner=GradResearchModel.render(s.model);return inner?`<div class="th-block"><h3>${s.model.type==='flow'?'연구 절차':'연구 모형'}</h3>${inner}</div>`:''}
+function row(s){return `<article class="th-row ${s.group==='졸업생'?'alumni':''}" id="${sid(s.name)}"><div>${nameH(s)}</div>${tagsH(s)}${s.titles.length?titlesH(s)+(s.summary?`<div class="ab">${esc(s.summary)}</div>`:'')+methodH(s)+modelH(s):'<div class="pend">논문 제목 준비 중</div>'}</article>`}
 function render(){
   const q=document.getElementById('q').value.trim().toLowerCase();
-  const f=D.filter(s=>(!G||s.group===G)&&(!C||s.course===C)&&(!q||[s.name,s.name_ko,s.summary,...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase().includes(q)));
+  const f=D.filter(s=>(!G||s.group===G)&&(!C||s.course===C)&&(!q||[s.name,s.name_ko,s.summary,s.methodology||'',...s.titles.map(t=>[t.text,t.text_en||''].join(' '))].join(' ').toLowerCase().includes(q)));
   let h='';for(const g of ['졸업생','재학생']){const a=f.filter(s=>s.group===g);if(!a.length)continue;const cls=g==='졸업생'?'g-grad':'g-cur';h+=`<h2 class="g ${cls}"><span class="bar" aria-hidden="true"></span>${g} <span class="badge notranslate" translate="no">${a.length}</span></h2><div class="stack">${a.map(row).join('')}</div>`}
   document.getElementById('out').innerHTML=h||'<p class="empty">검색 결과가 없습니다.</p>';
   document.getElementById('cnt').textContent=f.length+' / '+D.length;
@@ -61,5 +63,6 @@ fetch('assets/theses.json').then(r=>r.json()).then(j=>{D=j.students;render();doc
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
+<script src="assets/research-model.js"></script>
 <script src="assets/lang.js"></script>
 </body></html>

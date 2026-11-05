@@ -1,6 +1,6 @@
 {
  "source": "Google Sheet: 가천대학교 대학원 논문 지도 현황 / 지도학생 목록",
- "generated_at": "2026-11-04T18:40+09:00",
+ "generated_at": "2026-11-05T19:41+09:00",
  "advisor_email": "hoseo@gachon.ac.kr",
  "kakao_url": "https://invite.kakao.com/tc/laAIAA2u8a",
  "current": [
@@ -246,7 +246,7 @@
     "2025-6-13"
    ],
    "grad_year": "2025",
-   "grad_note": "2025년8월"
+   "grad_note": "2025년 8월 졸업"
   },
   {
    "name": "TRINH THI TU UYEN",
@@ -262,7 +262,7 @@
     "2025-6-13"
    ],
    "grad_year": "2025",
-   "grad_note": "2025년8월"
+   "grad_note": "2025년 8월 졸업"
   },
   {
    "name": "LE NGOC MINH THU",
@@ -278,7 +278,7 @@
     "2025-6-13"
    ],
    "grad_year": "2025",
-   "grad_note": "2025년8월"
+   "grad_note": "2025년 8월 졸업"
   },
   {
    "name": "NGUYEN HOANG ANH DUNG",
@@ -294,7 +294,7 @@
     "2025-12-5"
    ],
    "grad_year": "2026",
-   "grad_note": "2026년2월"
+   "grad_note": "2026년 2월 졸업"
   },
   {
    "name": "SUNATULLAEVA MUSHTARIYBONU NEMATULLA KIZI",
@@ -310,7 +310,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "FAN BOSHUO",
@@ -325,7 +326,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "MAI THI THU TRANG",
@@ -340,7 +342,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "ZHUANG ZIHAN",
@@ -355,7 +358,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "HOANG SAM SONG THUONG",
@@ -370,7 +374,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "NGUYEN THI QUYNH",
@@ -385,7 +390,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "VU HOANG NHU QUYNH",
@@ -400,7 +406,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "NGUYEN THAO NGUYEN",
@@ -415,7 +422,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "LAI QUOC DAT",
@@ -430,7 +438,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "HOANG NGOC HUYEN",
@@ -445,7 +454,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "PHAM CUONG QUOC",
@@ -460,7 +470,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   },
   {
    "name": "NGUYEN KIM NGOC",
@@ -475,7 +486,8 @@
    "final": [
     "2026-06-15"
    ],
-   "grad_year": "2026"
+   "grad_year": "2026",
+   "grad_note": "2026년 8월 졸업"
   }
  ]
 }

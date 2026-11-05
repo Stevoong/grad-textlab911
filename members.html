@@ -51,7 +51,7 @@ function row(s){
   const ko=s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:'';
   const courseCls=s.course==='박사'?'phd':'msc';
   const groupCls=alum?'grd':'cur';
-  return `<div class="m-row ${alum?'alumni':''}">${nm}${ko}<div class="tags"><span class="tag ${courseCls}">${esc(s.course)}</span><span class="tag ${groupCls}">${esc(s.group)}</span></div></div>`;
+  return `<div class="m-row ${alum?'alumni':''}">${nm}${ko}<div class="tags"><span class="tag ${courseCls}">${esc(s.course)}</span><span class="tag ${groupCls}">${esc(s.group)}</span>${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}</div></div>`;
 }
 function section(title, arr, alum){
   if(!arr.length) return '';
@@ -59,7 +59,7 @@ function section(title, arr, alum){
   return `<div class="group-h ${alum?'alumni':''}"><span class="bar" aria-hidden="true"></span>${title} <span class="badge notranslate" translate="no">${sorted.length}</span></div>`+sorted.map(row).join('');
 }
 fetch('assets/advising.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
-  const grads=(j.graduates||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'졸업생'}));
+  const grads=(j.graduates||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'졸업생',graduation:s.grad_note||''}));
   const curs=(j.current||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'재학생'}));
   document.getElementById('nAll').textContent=(grads.length+curs.length)+'명';
   document.getElementById('out').innerHTML=section('졸업생',grads,true)+section('재학생',curs,false);

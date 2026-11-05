@@ -34,7 +34,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const sid=n=>'s-'+n.toLowerCase().replace(/[^a-z0-9가-힣]+/g,'-');
 let D=[],G='',C='';
 const nameH=s=>`<span class="nm notranslate" translate="no">${esc(s.name)}</span>${s.name_ko&&s.name_ko!==s.name?`<span class="ko notranslate" translate="no">${esc(s.name_ko)}</span>`:''}`;
-const tagsH=s=>`<div class="tags"><span class="tag ${s.course==='박사'?'phd':'msc'}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':'cur'}">${esc(s.group)}</span><span class="tag method">${esc(s.method)}</span></div>`;
+const tagsH=s=>`<div class="tags"><span class="tag ${s.course==='박사'?'phd':'msc'}">${esc(s.course)}</span><span class="tag ${s.group==='졸업생'?'grd':'cur'}">${esc(s.group)}</span>${s.graduation?`<span class="tag grad-when notranslate" translate="no">${esc(s.graduation)}</span>`:''}<span class="tag method">${esc(s.method)}</span></div>`;
 const titlesH=s=>s.titles.map(t=>{
   const note=t.note||t.kind||'';
   const en=t.text_en||'';

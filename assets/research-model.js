@@ -94,6 +94,7 @@
     html += '<div class="rm-title">' + esc(m.title || '연구 모형') + '</div>';
     if (m.note) html += '<p class="rm-note">' + esc(m.note) + '</p>';
 
+    html += '<p class="rm-scroll-hint" aria-hidden="true">← 좌우로 밀어 연구모형을 보세요 →</p>';
     html += '<div class="rm-diagram">';
     html += '<svg class="rm-svg" aria-hidden="true"></svg>';
 
@@ -278,13 +279,6 @@
     var model;
     try { model = JSON.parse(raw); } catch (e) { return { drawn: 0, labels: [] }; }
 
-    /* mobile: hide SVG arrows, keep list */
-    if (window.matchMedia && window.matchMedia('(max-width:700px)').matches) {
-      svg.innerHTML = '';
-      svg.style.display = 'none';
-      host.classList.add('rm-mobile');
-      return { drawn: 0, labels: [], mobile: true };
-    }
     host.classList.remove('rm-mobile');
     svg.style.display = '';
 

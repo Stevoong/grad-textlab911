@@ -381,3 +381,11 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .about-links-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 
 .pub-sum{margin:.35rem 0 .2rem;font-size:.92rem;line-height:1.55;color:var(--ink2)}
+
+/* about profile with photo */
+.about-prof-grid{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:start}
+@media (max-width:640px){.about-prof-grid{grid-template-columns:1fr}}
+.about-prof-photo{width:140px;height:auto;border-radius:var(--radius);border:1px solid var(--line);object-fit:cover;background:var(--bg2)}
+.about-prof .role-list{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.5;color:var(--ink2)}
+.about-prof .role-list li{padding:0}
+.pub-sum-en{display:block;margin-top:4px;font-size:12.5px;color:var(--mute);line-height:1.45}

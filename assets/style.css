@@ -92,9 +92,9 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.025em;line-height:1.15;text-wrap:ba
 .nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(243,245,248,.92);border-color:var(--line);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px)}
 .nav .wrap{height:64px;align-items:center}
-.logo{grid-column:1/8;white-space:normal;font-family:var(--lat);font-weight:600;font-size:15px;letter-spacing:-.02em;display:flex;gap:8px;align-items:center;min-width:0}
-.logo-text{display:flex;flex-direction:column;justify-content:center;height:44px;line-height:1.05;min-width:0}
-.logo-text .notranslate{white-space:nowrap;line-height:1.05}
+.logo{grid-column:1/8;white-space:normal;font-family:var(--lat);font-weight:600;font-size:14px;letter-spacing:-.02em;display:flex;gap:8px;align-items:center;min-width:0}
+.logo-text{display:flex;flex-direction:column;justify-content:center;gap:3px;height:44px;line-height:1.1;min-width:0}
+.logo-text .notranslate{white-space:nowrap;font-size:14px;line-height:1.1}
 .logo-place{font-size:12px;font-weight:500;color:var(--ink2);letter-spacing:-.01em;line-height:1.15;white-space:nowrap}
 .logo i{width:3px;flex:0 0 3px;align-self:stretch;background:var(--acc);border-radius:1px;box-shadow:none}
 .nav ul{grid-column:8/13;list-style:none;display:flex;justify-content:flex-end;flex-wrap:nowrap;gap:clamp(10px,1.5vw,22px)}

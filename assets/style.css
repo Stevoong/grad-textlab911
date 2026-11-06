@@ -541,6 +541,7 @@ body.grad .page.has-hero{padding-top:36px}
 .interest-block{margin-top:14px}
 .interest-figs{display:grid;gap:14px;margin-top:16px}
 .interest-figs.cols-2{grid-template-columns:1fr 1fr}
+.interest-figs.cols-2 figure:nth-child(n+3){grid-column:1 / -1}
 .interest-figs figure{margin:0}
 .interest-figs a{display:block;line-height:0}
 .interest-figs img{width:100%;height:auto;display:block;border-radius:var(--radius-sm);border:1px solid var(--line);background:#fff;image-rendering:auto}

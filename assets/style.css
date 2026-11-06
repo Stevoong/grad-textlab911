@@ -389,3 +389,28 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .about-prof .role-list{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:4px;font-size:14px;line-height:1.5;color:var(--ink2)}
 .about-prof .role-list li{padding:0}
 .pub-sum-en{display:block;margin-top:4px;font-size:12.5px;color:var(--mute);line-height:1.45}
+
+/* graduation three-track flows */
+.grad-tracks{display:flex;flex-direction:column;gap:18px;margin:0 0 8px}
+.grad-track{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow-sm);padding:16px 18px}
+.grad-track-h{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.grad-track-h .badge{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.04em;padding:4px 10px;border-radius:var(--radius-pill);color:#fff}
+.grad-track.t-thesis .badge{background:var(--acc)}
+.grad-track.t-nonthesis .badge{background:var(--cerulean)}
+.grad-track.t-video .badge{background:var(--navy)}
+.grad-track-h h3{margin:0;font-size:16px;font-weight:600}
+.grad-track .track-note{font-size:13px;color:var(--ink2);line-height:1.55;margin:0 0 12px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow-step{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:40px;padding:8px 12px;border-radius:var(--radius-sm);font-size:12.5px;font-weight:500;line-height:1.35;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:160px}
+.grad-track.t-thesis .flow-step{border-color:rgba(36,64,216,.28);background:var(--acc-soft)}
+.grad-track.t-nonthesis .flow-step{border-color:rgba(0,123,167,.28);background:var(--cerulean-soft)}
+.grad-track.t-video .flow-step{border-color:rgba(15,31,77,.22);background:var(--navy-soft)}
+.flow-step.final{font-weight:600;border-width:2px}
+.grad-track.t-thesis .flow-step.final{border-color:var(--acc);color:var(--acc)}
+.grad-track.t-nonthesis .flow-step.final{border-color:var(--cerulean);color:var(--cerulean)}
+.grad-track.t-video .flow-step.final{border-color:var(--navy);color:var(--navy)}
+.flow-arrow{color:var(--mute);font-size:14px;user-select:none}
+.flow-branch{width:100%;margin-top:4px;padding:10px 12px;border-radius:var(--radius-sm);border:1px dashed var(--line);background:var(--bg2);font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.track-toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.track-toc a{font-size:13px;padding:6px 12px;border-radius:var(--radius-pill);border:1px solid var(--line);background:var(--panel);color:var(--ink);text-decoration:none}
+.track-toc a:hover{border-color:var(--acc);color:var(--acc)}

@@ -93,9 +93,9 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.025em;line-height:1.15;text-wrap:ba
 .nav.scrolled{background:rgba(243,245,248,.92);border-color:var(--line);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px)}
 .nav .wrap{height:64px;align-items:center}
 .logo{grid-column:1/8;white-space:normal;font-family:var(--lat);font-weight:600;font-size:14px;letter-spacing:-.02em;display:flex;gap:8px;align-items:center;min-width:0}
-.logo-text{display:flex;flex-direction:column;justify-content:center;gap:3px;height:44px;line-height:1.1;min-width:0}
+.logo-text{display:flex;flex-direction:column;justify-content:center;gap:3px;height:auto;line-height:1.1;min-width:0}
 .logo-text .notranslate{white-space:nowrap;font-size:14px;line-height:1.1}
-.logo-place{font-size:12px;font-weight:500;color:var(--ink2);letter-spacing:-.01em;line-height:1.15;white-space:nowrap}
+.logo-place{font-size:12px;font-weight:500;color:#8a93a6;letter-spacing:-.01em;line-height:1.15;white-space:nowrap}
 .logo i{width:3px;flex:0 0 3px;align-self:stretch;background:var(--acc);border-radius:1px;box-shadow:none}
 .nav ul{grid-column:8/13;list-style:none;display:flex;justify-content:flex-end;flex-wrap:nowrap;gap:clamp(10px,1.5vw,22px)}
 .nav ul a{font-size:clamp(12.5px,1.15vw,14px);font-weight:500;color:var(--ink2);position:relative;padding:4px 0;transition:color .3s;white-space:nowrap}
@@ -157,8 +157,8 @@ footer a:hover, .site-foot a:hover{color:var(--cerulean)}
   :root{--gut:14px}
   .nav{background:rgba(243,245,248,.92);border-bottom-color:var(--line);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px)}
   .nav .wrap{display:flex;align-items:center;height:64px;min-height:64px;gap:8px}
-  .logo{flex:1 1 auto;min-width:0;height:44px;align-items:center;white-space:normal;grid-column:auto}
-  .logo-text{height:44px;justify-content:center}
+  .logo{flex:1 1 auto;min-width:0;height:auto;align-items:center;white-space:normal;grid-column:auto}
+  .logo-text{height:auto}
   .logo-place{font-size:11px;line-height:1.15;white-space:nowrap}
   .menu-btn{flex:0 0 44px;height:44px;margin-left:auto;align-self:center}
   .nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;padding:8px var(--pad) 20px;border-bottom:1px solid var(--line);max-height:calc(100vh - 64px);overflow:auto}

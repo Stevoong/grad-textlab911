@@ -533,6 +533,8 @@ body.grad .page.has-hero{padding-top:36px}
 .track-toc{text-align:left}
 
 .process-prose h3{font-size:16px;font-weight:600;color:var(--navy);margin:18px 0 6px}
+.process-prose a:not(.btn-th){color:var(--acc);border-bottom:1px solid rgba(36,64,216,.35);font-weight:600}
+.process-prose a:not(.btn-th):hover{color:var(--cerulean);border-bottom-color:var(--cerulean)}
 .process-prose p{margin:0 0 12px}
 .process-prose .hero-actions{margin:4px 0 0}
 

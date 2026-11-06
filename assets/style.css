@@ -272,6 +272,9 @@ table.t{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
 .prof .links{margin-top:14px;font-size:14px;color:var(--ink2);line-height:1.8}
 .prof .links a{border-bottom:1px solid rgba(36,64,216,.3);color:var(--acc)}
 .prof .links a:hover{border-color:var(--cerulean);color:var(--cerulean)}
+.prof-id{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:0 0 40px;background:var(--bg2);border:1px solid var(--line);display:inline-block;box-sizing:border-box}
+.avatar-empty{background:var(--bg2)}
 .m-list{display:flex;flex-direction:column;gap:8px}
 .m-row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--shadow-sm);border-left:3px solid var(--acc)}
 .m-row.alumni{border-left-color:var(--navy)}

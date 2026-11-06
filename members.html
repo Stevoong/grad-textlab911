@@ -11,11 +11,11 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261106n" sizes="180x180">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=20261106m">
+<link rel="stylesheet" href="assets/style.css?v=20261106o">
 </head><body class="grad">
 <nav class="nav" id="nav"><div class="wrap g12">
   <a href="./" class="logo notranslate" translate="no"><i></i>Text Lab. 911</a>
-  <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">MENU</button>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span aria-hidden="true"></span></button>
   <!-- 본 연구소 사이트(textlab911.com) 개편·공개 전까지 개발도구·교수 소개·제작 Works·연구·저서·연구개발·연락 GNB는 연결하지 않음 -->
       <ul>
     <li><a href="./">대학원 지도</a></li>
@@ -87,7 +87,7 @@ fetch('assets/advising.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
 });
 (function(){
   var nav=document.getElementById('nav'), mb=document.getElementById('menuBtn');
-  if(mb) mb.onclick=function(){nav.classList.toggle('open');};
+  if(mb) mb.onclick=function(){var open=nav.classList.toggle('open');mb.setAttribute('aria-expanded',open?'true':'false');mb.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');};
   var onScroll=function(){if(!nav)return;nav.classList.toggle('scrolled', window.scrollY>8);};
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 })();

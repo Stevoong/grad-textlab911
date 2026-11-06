@@ -101,7 +101,14 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.025em;line-height:1.15;text-wrap:ba
 .nav ul a:hover::after,.nav ul a.active::after{transform:scaleX(1);transform-origin:left}
 .nav ul a.active{color:var(--acc);font-weight:600}
 .nav ul a.grad{color:var(--ink)}
-.menu-btn{display:none;grid-column:10/13;justify-self:end;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+.menu-btn{display:none;grid-column:10/13;justify-self:end;align-self:center;width:44px;height:44px;padding:0;border:0;background:transparent;color:var(--acc);cursor:pointer;position:relative}
+.menu-btn span{position:absolute;left:12px;right:12px;top:21px;height:2px;background:currentColor;border-radius:1px}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:1px;transition:transform .2s var(--ease),top .2s var(--ease)}
+.menu-btn span::before{top:-7px}
+.menu-btn span::after{top:7px}
+.nav.open .menu-btn span{background:transparent}
+.nav.open .menu-btn span::before{top:0;transform:rotate(45deg)}
+.nav.open .menu-btn span::after{top:0;transform:rotate(-45deg)}
 
 /* ---- image placeholder frames (flat) ---- */
 .frame{position:relative;background:var(--frame);overflow:hidden;isolation:isolate}
@@ -144,9 +151,12 @@ footer a:hover, .site-foot a:hover{color:var(--cerulean)}
 
 @media (max-width:900px){
   :root{--gut:14px}
-  .nav ul{display:none;position:fixed;inset:64px 0 auto 0;background:var(--bg);flex-direction:column;gap:0;padding:8px var(--pad) 20px;border-bottom:1px solid var(--line)}
+  .nav{background:rgba(243,245,248,.92);border-bottom-color:var(--line);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px)}
+  .nav ul{display:none;position:fixed;inset:64px 0 auto 0;background:var(--bg);flex-direction:column;gap:0;padding:8px var(--pad) 20px;border-bottom:1px solid var(--line);max-height:calc(100vh - 64px);overflow:auto}
   .nav.open ul{display:flex}
   .nav ul a{display:block;padding:12px 0;font-size:17px;border-bottom:1px solid var(--line)}
+  .nav ul li.lang{padding:14px 0 4px}
+  .nav ul li.lang select{font-size:16px;min-height:44px;width:100%;max-width:280px;background-color:var(--panel);color:var(--ink)}
   .menu-btn{display:block}
   .sec-head .lab,.sec-head h2,.sec-head .aside{grid-column:1/-1}
   [class*="c1-"],[class*="c4-"],[class*="c5-"],[class*="c7-"],[class*="c8-"],[class*="c9-"],[class*="c10-"]{grid-column:1/-1}

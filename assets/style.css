@@ -403,6 +403,7 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .about-list .pub-title{font-weight:600;font-size:14.5px;line-height:1.45;margin:0 0 6px;color:var(--ink)}
 .about-list .pub-meta{font-size:13px;color:var(--ink2);line-height:1.55;margin:0 0 6px}
 .about-list .pub-meta .notranslate{font-family:var(--mono);font-size:12px}
+.about-list .pub-place{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;vertical-align:middle;font-weight:500;color:var(--ink)}
 .about-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .about-chips li{padding:7px 12px;border:1px solid rgba(0,123,167,.35);background:var(--cerulean-soft);color:var(--cerulean);border-radius:var(--radius-pill);font-size:13px;font-weight:500}
 .about-note{font-size:13px;color:var(--mute);line-height:1.6;margin:10px 0 0}
@@ -556,4 +557,5 @@ body.grad .page.has-hero{padding-top:36px}
 .interest-figs a{display:block;line-height:0}
 .interest-figs img{width:100%;height:auto;display:block;border-radius:var(--radius-sm);border:1px solid var(--line);background:#fff;image-rendering:auto}
 .interest-figs figcaption{margin-top:8px;font-size:13px;line-height:1.55;color:var(--ink2);text-align:justify;text-justify:inter-character;word-break:keep-all}
+.academic-posters{margin:0 0 18px}
 @media(max-width:720px){.interest-figs.cols-2{grid-template-columns:1fr}}

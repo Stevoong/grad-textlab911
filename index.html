@@ -16,7 +16,36 @@
     <li><a href="theses.html">지도학생 논문</a></li>
     <li><a href="methods.html">연구방법 가이드</a></li>
   </ul></div></nav>
-<main class="page">
+
+<div class="hero-carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="연구실 대문 사진">
+  <div class="slides" id="heroSlides">
+    <div class="slide is-active" data-i="1" role="group" aria-roledescription="slide" aria-label="1 / 7"><img src="assets/photos/hero/01.jpg" alt="Text Lab. 911 활동 사진 1" width="1920" height="1080" decoding="async" loading="eager"></div>
+    <div class="slide" data-i="2" role="group" aria-roledescription="slide" aria-label="2 / 7"><img src="assets/photos/hero/02.jpg" alt="Text Lab. 911 활동 사진 2" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="3" role="group" aria-roledescription="slide" aria-label="3 / 7"><img src="assets/photos/hero/03.jpg" alt="Text Lab. 911 활동 사진 3" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="4" role="group" aria-roledescription="slide" aria-label="4 / 7"><img src="assets/photos/hero/04.jpg" alt="Text Lab. 911 활동 사진 4" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="5" role="group" aria-roledescription="slide" aria-label="5 / 7"><img src="assets/photos/hero/05.jpg" alt="Text Lab. 911 활동 사진 5" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="6" role="group" aria-roledescription="slide" aria-label="6 / 7"><img src="assets/photos/hero/06.jpg" alt="Text Lab. 911 활동 사진 6" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="7" role="group" aria-roledescription="slide" aria-label="7 / 7"><img src="assets/photos/hero/07.jpg" alt="Text Lab. 911 활동 사진 7" width="1920" height="1080" decoding="async" loading="lazy"></div>
+  </div>
+  <div class="hero-ui">
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="사진 선택">
+      <button type="button" data-dot="1" aria-label="1번째 사진" aria-current="true"></button>
+      <button type="button" data-dot="2" aria-label="2번째 사진"></button>
+      <button type="button" data-dot="3" aria-label="3번째 사진"></button>
+      <button type="button" data-dot="4" aria-label="4번째 사진"></button>
+      <button type="button" data-dot="5" aria-label="5번째 사진"></button>
+      <button type="button" data-dot="6" aria-label="6번째 사진"></button>
+      <button type="button" data-dot="7" aria-label="7번째 사진"></button>
+    </div>
+    <div class="hero-btns">
+      <button type="button" id="heroPrev" aria-label="이전 사진">‹</button>
+      <button type="button" id="heroPause" aria-pressed="false" aria-label="자동 전환 일시정지">일시정지</button>
+      <button type="button" id="heroNext" aria-label="다음 사진">›</button>
+    </div>
+  </div>
+</div>
+
+<main class="page has-hero">
   <header class="page-hero">
     <p class="page-kicker">Graduate advising</p>
     <h1>대학원 지도</h1>
@@ -92,5 +121,49 @@ fetch('assets/advising_photos.json',{cache:'no-store'}).then(r=>r.json()).catch(
   onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
 })();
 </script>
+
+<script>
+(function(){
+  var root=document.getElementById('heroCarousel');
+  if(!root) return;
+  var slides=[].slice.call(root.querySelectorAll('.slide'));
+  var dots=[].slice.call(root.querySelectorAll('[data-dot]'));
+  var pauseBtn=document.getElementById('heroPause');
+  var i=0, n=slides.length, timer=null, reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var INTERVAL=5500;
+  function show(k){
+    i=(k+n)%n;
+    slides.forEach(function(s,idx){ s.classList.toggle('is-active', idx===i); });
+    dots.forEach(function(d,idx){
+      if(idx===i) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current');
+    });
+  }
+  function next(){ show(i+1); }
+  function prev(){ show(i-1); }
+  function stop(){
+    if(timer){ clearInterval(timer); timer=null; }
+    if(pauseBtn){ pauseBtn.setAttribute('aria-pressed','true'); pauseBtn.textContent='재생'; }
+  }
+  function start(){
+    if(reduced) return;
+    stop();
+    if(pauseBtn){ pauseBtn.setAttribute('aria-pressed','false'); pauseBtn.textContent='일시정지'; }
+    timer=setInterval(next, INTERVAL);
+  }
+  document.getElementById('heroNext').onclick=function(){ next(); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); };
+  document.getElementById('heroPrev').onclick=function(){ prev(); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); };
+  pauseBtn.onclick=function(){
+    if(pauseBtn.getAttribute('aria-pressed')==='true') start(); else stop();
+  };
+  dots.forEach(function(d){ d.onclick=function(){ show(+d.getAttribute('data-dot')-1); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); }; });
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', function(){ if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', function(e){ if(!root.contains(e.relatedTarget) && pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
+  if(!reduced) start(); else stop();
+})();
+</script>
+
 <script src="assets/lang.js"></script>
 </body></html>

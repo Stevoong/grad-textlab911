@@ -144,6 +144,7 @@ body:not(.grad) footer .wrap, body:not(.grad) .site-foot .wrap{max-width:var(--m
 .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 20px}
 .foot-brand{font-size:12.5px;font-weight:500;color:var(--ink2);letter-spacing:.01em}
 .foot-note{font-size:11px;line-height:1.45;text-align:right;flex:1 1 220px;color:var(--ink2);opacity:.42;letter-spacing:.02em;font-weight:400}
+.foot-note a,.foot-note a:hover{color:inherit;text-decoration:none}
 @media(max-width:640px){.foot-note{text-align:left}}
 footer .wrap>*, .site-foot .wrap>*{font-size:inherit;color:inherit}
 footer a, .site-foot a{color:var(--acc);text-decoration:none}

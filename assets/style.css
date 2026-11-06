@@ -96,7 +96,7 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.025em;line-height:1.15;text-wrap:ba
 .logo-text{display:flex;flex-direction:column;justify-content:center;height:44px;line-height:1.05;min-width:0}
 .logo-text .notranslate{white-space:nowrap;line-height:1.05}
 .logo-place{font-size:12px;font-weight:500;color:var(--ink2);letter-spacing:-.01em;line-height:1.15;white-space:nowrap}
-.logo i{width:9px;height:9px;background:var(--acc);display:inline-block;border-radius:2px;box-shadow:0 0 0 3px var(--acc-soft)}
+.logo i{width:3px;flex:0 0 3px;align-self:stretch;background:var(--acc);border-radius:1px;box-shadow:none}
 .nav ul{grid-column:8/13;list-style:none;display:flex;justify-content:flex-end;flex-wrap:nowrap;gap:clamp(10px,1.5vw,22px)}
 .nav ul a{font-size:clamp(12.5px,1.15vw,14px);font-weight:500;color:var(--ink2);position:relative;padding:4px 0;transition:color .3s;white-space:nowrap}
 .nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}

@@ -73,6 +73,7 @@ fetch('assets/advising.json',{cache:'no-store'}).then(r=>r.json()).then(j=>{
   const curs=(j.current||[]).map(s=>({name:s.name,name_ko:s.name_ko,course:s.course,group:'재학생',...meta(s)}));
   document.getElementById('nAll').textContent=(grads.length+curs.length)+'명';
   document.getElementById('out').innerHTML=section('졸업생',grads,true)+section('재학생',curs,false);
+  if(window.TL_LANG) TL_LANG.afterContent();
   document.getElementById('meta').textContent='데이터 갱신: '+j.generated_at;
 });
 (function(){

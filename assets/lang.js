@@ -1,26 +1,79 @@
-/* Shared language selector — Google Website Translator driven by our own dropdown. */
+/* Shared language selector — Google Website Translator driven by our own dropdown.
+   Each choice reloads from the original Korean DOM. The widget keeps a translated
+   tree, so a second language (or a return to Korean) must not run on that tree. */
 (function(){
   var L=[['ko','한국어'],['en','English'],['zh-CN','中文(简体)'],['vi','Tiếng Việt'],['mn','Монгол']];
-  var KEY='tl911_lang', cur=localStorage.getItem(KEY)||'ko';
-  function setCookie(v){var d=location.hostname;
-    var ex=v?'':';expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    document.cookie='googtrans='+(v||'')+';path=/'+ex;
-    if(d&&d.indexOf('.')>0){document.cookie='googtrans='+(v||'')+';path=/;domain='+d+ex;document.cookie='googtrans='+(v||'')+';path=/;domain=.'+d.replace(/^www\./,'')+ex;}}
-  function combo(){return document.querySelector('select.goog-te-combo');}
-  function apply(code){
-    localStorage.setItem(KEY,code);
-    if(code==='ko'){setCookie('');var c=combo();if(document.documentElement.classList.contains('translated-ltr')||document.documentElement.classList.contains('translated-rtl')){location.reload();}return;}
-    setCookie('/ko/'+code);
-    var n=0,t=setInterval(function(){var c=combo(),h=document.documentElement.classList;
-      if(h.contains('translated-ltr')&&c&&c.value===code){clearInterval(t);return;}
-      if(c&&c.options.length>1){c.value=code;c.dispatchEvent(new Event('change'));}
-      if(++n>40)clearInterval(t);},400);
+  var KEY='tl911_lang';
+  var cur=localStorage.getItem(KEY)||'ko';
+  if(!L.some(function(x){return x[0]===cur;})) cur='ko';
+
+  function domains(){
+    var host=location.hostname||'';
+    var list=[''];
+    if(!host) return list;
+    list.push(host, '.'+host);
+    var parts=host.split('.');
+    for(var i=1;i<parts.length-1;i++){
+      var d=parts.slice(i).join('.');
+      list.push(d, '.'+d);
+    }
+    return list;
   }
-  // UI
+  function writeCookie(name, value, domain){
+    var dom=domain?';domain='+domain:'';
+    if(value) document.cookie=name+'='+value+';path=/'+dom;
+    else document.cookie=name+'=;path=/'+dom+';expires=Thu, 01 Jan 1970 00:00:00 GMT;max-age=0';
+  }
+  function clearGoogTrans(){
+    domains().forEach(function(domain){
+      writeCookie('googtrans','',domain);
+      writeCookie('googtransopt','',domain);
+    });
+  }
+  /* One host-only cookie. Domain copies of an older language otherwise win. */
+  function setGoogTrans(code){
+    clearGoogTrans();
+    if(code && code!=='ko') writeCookie('googtrans','/ko/'+code,'');
+  }
+  function stripHash(){
+    if(/googtrans/i.test(location.hash)){
+      try{ history.replaceState(null,'', location.pathname+location.search); }catch(e){}
+    }
+  }
+  function combo(){return document.querySelector('select.goog-te-combo');}
+  function translated(){
+    var h=document.documentElement.classList;
+    return h.contains('translated-ltr')||h.contains('translated-rtl');
+  }
+  /* User choice: store, fix cookies, reload the original page. */
+  function choose(code){
+    if(!L.some(function(x){return x[0]===code;})) code='ko';
+    localStorage.setItem(KEY, code);
+    setGoogTrans(code);
+    stripHash();
+    location.reload();
+  }
+  /* Fresh load only. Stop once Google has translated; never change language in place. */
+  function syncOnce(code){
+    if(!code || code==='ko') return;
+    var n=0, fired=false;
+    var t=setInterval(function(){
+      if(translated()){ clearInterval(t); return; }
+      var c=combo();
+      if(!fired && c && c.options.length>1){
+        fired=true;
+        if(c.value!==code) c.value=code;
+        c.dispatchEvent(new Event('change'));
+      }
+      if(++n>30) clearInterval(t);
+    }, 250);
+  }
+
   var li=document.createElement('li');li.className='lang notranslate';li.setAttribute('translate','no');
   var sel=document.createElement('select');sel.id='langSel';sel.setAttribute('aria-label','Language / 언어');
   L.forEach(function(x){var o=document.createElement('option');o.value=x[0];o.textContent=x[1];sel.appendChild(o);});
-  sel.value=cur;sel.onchange=function(){cur=sel.value;apply(cur);};
+  sel.value=cur;
+  sel.onchange=function(){ choose(sel.value); };
   li.appendChild(sel);
   var ul=document.querySelector('#nav ul');if(ul)ul.appendChild(li);
   var st=document.createElement('style');st.textContent=
@@ -30,13 +83,38 @@
    'body{top:0!important;position:static!important}.goog-text-highlight{background:none!important;box-shadow:none!important}font{background:none!important}';
   document.head.appendChild(st);
   var g=document.createElement('div');g.id='google_translate_element';document.body.appendChild(g);
+  /* Dynamic pages (논문·구성원·지도 표) inject Korean after first paint.
+     Start the translator only once that HTML is in the document, so the first
+     pass translates it. A later in-place language change is not used. */
+  var scriptLoaded=false;
+  function loadTranslator(){
+    if(scriptLoaded) return;
+    scriptLoaded=true;
+    clearTimeout(bootTimer);
+    clearTimeout(readyTimer);
+    var s=document.createElement('script');
+    s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    s.async=true;
+    s.onerror=function(){window.TL_LANG_ERROR='translate script failed to load';sel.title='자동 번역을 불러오지 못했습니다';};
+    document.head.appendChild(s);
+  }
+  var dynamic=/(?:^|\/)(?:theses|members|index)\.html$|\/$/.test(location.pathname);
+  var bootTimer=setTimeout(loadTranslator, dynamic?3000:40);
+  var readyTimer=null;
   window.googleTranslateElementInit=function(){
-    new google.translate.TranslateElement({pageLanguage:'ko',includedLanguages:'en,zh-CN,vi,mn,ko',autoDisplay:false},'google_translate_element');
-    if(cur!=='ko')apply(cur);
+    new google.translate.TranslateElement({pageLanguage:'ko',includedLanguages:'en,zh-CN,vi,mn',autoDisplay:false},'google_translate_element');
+    var code=localStorage.getItem(KEY)||cur;
+    if(code!=='ko') syncOnce(code);
   };
-  if(cur!=='ko')setCookie('/ko/'+cur); else setCookie('');
-  var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';s.async=true;
-  s.onerror=function(){window.TL_LANG_ERROR='translate script failed to load';sel.title='자동 번역을 불러오지 못했습니다';};
-  document.head.appendChild(s);
-  window.TL_LANG={apply:apply};
+  setGoogTrans(cur);
+  window.addEventListener('pageshow', function(e){
+    if(!e.persisted) return;
+    var want=localStorage.getItem(KEY)||'ko';
+    if(want==='ko' && translated()) location.reload();
+  });
+  window.TL_LANG={apply:choose, afterContent:function(){
+    clearTimeout(bootTimer);
+    clearTimeout(readyTimer);
+    readyTimer=setTimeout(loadTranslator, 60);
+  }};
 })();

@@ -482,3 +482,51 @@ body.grad .page.has-hero{padding-top:36px}
 /* graduation master-flow SVG diagram */
 .grad-master-flow{margin:0;padding:18px 16px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow-sm);overflow:auto;width:100%;box-sizing:border-box}
 .grad-master-flow svg{display:block;width:100%;height:auto;min-width:640px}
+
+/* Body prose: 양끝 정렬 (sitewide) */
+.page .lead,
+.page .card,
+.page .pub-sum,
+.page .about-list li,
+.page .small,
+.process-prose,
+.mg-sec p,
+.mg-sec li,
+.mg-sec .lead-s,
+.mg-card p,
+.mg-note,
+.mg-ex,
+.mg-tool-body p,
+.mg-tool-body li,
+.ab,
+.th-method{
+  text-align:justify;
+  text-justify:inter-character;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+.page .pub-title,
+.page .pub-meta,
+.page h1,
+.page h2,
+.page h3,
+.page .page-kicker,
+.page .hero-actions,
+.about-links-row,
+.about-chips,
+.flow-step,
+.grad-track-h,
+.track-toc{text-align:left}
+
+.process-prose h3{font-size:16px;font-weight:600;color:var(--navy);margin:18px 0 6px}
+.process-prose p{margin:0 0 12px}
+.process-prose .hero-actions{margin:4px 0 0}
+
+.interest-block{margin-top:14px}
+.interest-figs{display:grid;gap:14px;margin-top:16px}
+.interest-figs.cols-2{grid-template-columns:1fr 1fr}
+.interest-figs figure{margin:0}
+.interest-figs a{display:block;line-height:0}
+.interest-figs img{width:100%;height:auto;display:block;border-radius:var(--radius-sm);border:1px solid var(--line);background:#fff;image-rendering:auto}
+.interest-figs figcaption{margin-top:8px;font-size:13px;line-height:1.55;color:var(--ink2);text-align:justify;text-justify:inter-character;word-break:keep-all}
+@media(max-width:720px){.interest-figs.cols-2{grid-template-columns:1fr}}

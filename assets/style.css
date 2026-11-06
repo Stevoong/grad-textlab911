@@ -463,7 +463,7 @@ body.grad .page.has-hero{padding-top:36px}
 .grad-track.t-nonthesis .badge{background:var(--opera)}
 .grad-track.t-video .badge{background:var(--navy)}
 .grad-track-h h3{margin:0;font-size:16px;font-weight:600;color:var(--navy)}
-.grad-track .track-note{font-size:13px;color:var(--ink2);line-height:1.55;margin:0 0 14px;width:100%}
+.grad-track .track-note{font-size:13px;color:var(--ink2);line-height:1.55;margin:14px 0 0;width:100%;text-align:justify;text-justify:inter-character;word-break:keep-all}
 .flow{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;align-items:stretch;gap:8px;width:100%;position:relative}
 .flow-step{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:88px;min-height:88px;padding:10px 8px;border-radius:var(--radius-sm);font-size:12.5px;font-weight:500;line-height:1.35;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);width:100%;box-sizing:border-box;word-break:keep-all}
 .flow-step .small{display:block;margin-top:4px;font-size:11px;font-weight:400;color:var(--mute);line-height:1.35}

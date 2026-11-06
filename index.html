@@ -9,7 +9,7 @@
   <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">MENU</button>
   <!-- 본 연구소 사이트(textlab911.com) 개편·공개 전까지 개발도구·소개·제작 Works·연구·저서·연구개발·연락 GNB는 연결하지 않음 -->
     <ul>
-    <li><a href="about.html">소개</a></li>
+    <li><a href="about.html">교수 소개</a></li>
     <li><a href="members.html">구성원</a></li>
     <li><a href="./" class="active">대학원 지도</a></li>
     <li><a href="graduation.html">졸업 방식</a></li>
@@ -19,13 +19,13 @@
 
 <div class="hero-carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="연구실 대문 사진">
   <div class="slides" id="heroSlides">
-    <div class="slide is-active" data-i="1" role="group" aria-roledescription="slide" aria-label="1 / 7"><img src="assets/photos/hero/01.jpg" alt="Text Lab. 911 활동 사진 1" width="1920" height="1080" decoding="async" loading="eager"></div>
-    <div class="slide" data-i="2" role="group" aria-roledescription="slide" aria-label="2 / 7"><img src="assets/photos/hero/02.jpg" alt="Text Lab. 911 활동 사진 2" width="1920" height="1080" decoding="async" loading="lazy"></div>
-    <div class="slide" data-i="3" role="group" aria-roledescription="slide" aria-label="3 / 7"><img src="assets/photos/hero/03.jpg" alt="Text Lab. 911 활동 사진 3" width="1920" height="1080" decoding="async" loading="lazy"></div>
-    <div class="slide" data-i="4" role="group" aria-roledescription="slide" aria-label="4 / 7"><img src="assets/photos/hero/04.jpg" alt="Text Lab. 911 활동 사진 4" width="1920" height="1080" decoding="async" loading="lazy"></div>
-    <div class="slide" data-i="5" role="group" aria-roledescription="slide" aria-label="5 / 7"><img src="assets/photos/hero/05.jpg" alt="Text Lab. 911 활동 사진 5" width="1920" height="1080" decoding="async" loading="lazy"></div>
-    <div class="slide" data-i="6" role="group" aria-roledescription="slide" aria-label="6 / 7"><img src="assets/photos/hero/06.jpg" alt="Text Lab. 911 활동 사진 6" width="1920" height="1080" decoding="async" loading="lazy"></div>
-    <div class="slide" data-i="7" role="group" aria-roledescription="slide" aria-label="7 / 7"><img src="assets/photos/hero/07.jpg" alt="Text Lab. 911 활동 사진 7" width="1920" height="1080" decoding="async" loading="lazy"></div>
+    <div class="slide is-active" data-i="1" role="group" aria-roledescription="slide" aria-label="1 / 7"><img src="assets/photos/hero/01.jpg" srcset="assets/photos/hero/01-1280.jpg 1280w, assets/photos/hero/01.jpg 2560w" sizes="100vw" width="2560" height="1428" alt="Text Lab. 911 활동 사진 1" decoding="async" loading="eager" fetchpriority="high"></div>
+    <div class="slide" data-i="2" role="group" aria-roledescription="slide" aria-label="2 / 7"><img src="assets/photos/hero/02.jpg" srcset="assets/photos/hero/02.jpg 960w" sizes="100vw" width="960" height="540" alt="Text Lab. 911 활동 사진 2" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="3" role="group" aria-roledescription="slide" aria-label="3 / 7"><img src="assets/photos/hero/03.jpg" srcset="assets/photos/hero/03.jpg 960w" sizes="100vw" width="960" height="540" alt="Text Lab. 911 활동 사진 3" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="4" role="group" aria-roledescription="slide" aria-label="4 / 7"><img src="assets/photos/hero/04.jpg" srcset="assets/photos/hero/04.jpg 960w" sizes="100vw" width="960" height="540" alt="Text Lab. 911 활동 사진 4" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="5" role="group" aria-roledescription="slide" aria-label="5 / 7"><img src="assets/photos/hero/05.jpg" srcset="assets/photos/hero/05.jpg 960w" sizes="100vw" width="960" height="540" alt="Text Lab. 911 활동 사진 5" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="6" role="group" aria-roledescription="slide" aria-label="6 / 7"><img src="assets/photos/hero/06.jpg" srcset="assets/photos/hero/06.jpg 972w" sizes="100vw" width="972" height="540" alt="Text Lab. 911 활동 사진 6" decoding="async" loading="lazy"></div>
+    <div class="slide" data-i="7" role="group" aria-roledescription="slide" aria-label="7 / 7"><img src="assets/photos/hero/07.jpg" srcset="assets/photos/hero/07.jpg 960w" sizes="100vw" width="960" height="540" alt="Text Lab. 911 활동 사진 7" decoding="async" loading="lazy"></div>
   </div>
   <div class="hero-ui">
     <div class="hero-dots" id="heroDots" role="tablist" aria-label="사진 선택">
@@ -39,11 +39,11 @@
     </div>
     <div class="hero-btns">
       <button type="button" id="heroPrev" aria-label="이전 사진">‹</button>
-      <button type="button" id="heroPause" aria-pressed="false" aria-label="자동 전환 일시정지">일시정지</button>
       <button type="button" id="heroNext" aria-label="다음 사진">›</button>
     </div>
   </div>
 </div>
+
 
 <main class="page has-hero">
   <header class="page-hero">
@@ -75,7 +75,7 @@
     <div class="gal" id="gal"></div></section>
 
   <section id="contact"><h2><b>06</b>지도교수 연락처</h2>
-    <div class="card accent">서정호 교수 · 이메일 <a class="notranslate" translate="no" href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a> · <a href="about.html">소개</a></div>
+    <div class="card accent">서정호 교수 · 이메일 <a class="notranslate" translate="no" href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a> · <a href="about.html">교수 소개</a></div>
     <p class="meta notranslate" translate="no" id="meta"></p></section>
 </main>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="사진 크게 보기"><div class="bar"><span id="lbN"></span><button class="x" id="lbX" aria-label="닫기">×</button></div><div class="stage"><button class="nv pv" id="lbP" aria-label="이전 사진">←</button><img id="lbI" alt=""><button class="nv nx" id="lbNx" aria-label="다음 사진">→</button></div><div class="info" id="lbInfo"></div></div>
@@ -131,8 +131,8 @@ fetch('assets/advising_photos.json',{cache:'no-store'}).then(r=>r.json()).catch(
   if(!root) return;
   var slides=[].slice.call(root.querySelectorAll('.slide'));
   var dots=[].slice.call(root.querySelectorAll('[data-dot]'));
-  var pauseBtn=document.getElementById('heroPause');
-  var i=0, n=slides.length, timer=null, reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i=0, n=slides.length, timer=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var INTERVAL=5500;
   function show(k){
     i=(k+n)%n;
@@ -143,28 +143,19 @@ fetch('assets/advising_photos.json',{cache:'no-store'}).then(r=>r.json()).catch(
   }
   function next(){ show(i+1); }
   function prev(){ show(i-1); }
-  function stop(){
-    if(timer){ clearInterval(timer); timer=null; }
-    if(pauseBtn){ pauseBtn.setAttribute('aria-pressed','true'); pauseBtn.textContent='재생'; }
-  }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
   function start(){
     if(reduced) return;
     stop();
-    if(pauseBtn){ pauseBtn.setAttribute('aria-pressed','false'); pauseBtn.textContent='일시정지'; }
     timer=setInterval(next, INTERVAL);
   }
-  document.getElementById('heroNext').onclick=function(){ next(); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); };
-  document.getElementById('heroPrev').onclick=function(){ prev(); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); };
-  pauseBtn.onclick=function(){
-    if(pauseBtn.getAttribute('aria-pressed')==='true') start(); else stop();
-  };
-  dots.forEach(function(d){ d.onclick=function(){ show(+d.getAttribute('data-dot')-1); if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); }; });
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', function(){ if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
-  root.addEventListener('focusin', stop);
-  root.addEventListener('focusout', function(e){ if(!root.contains(e.relatedTarget) && pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
-  document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else if(pauseBtn.getAttribute('aria-pressed')!=='true') start(); });
-  if(!reduced) start(); else stop();
+  var nextBtn=document.getElementById('heroNext');
+  var prevBtn=document.getElementById('heroPrev');
+  if(nextBtn) nextBtn.onclick=function(){ next(); start(); };
+  if(prevBtn) prevBtn.onclick=function(){ prev(); start(); };
+  dots.forEach(function(d){ d.onclick=function(){ show(+d.getAttribute('data-dot')-1); start(); }; });
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else start(); });
+  if(!reduced) start();
 })();
 </script>
 

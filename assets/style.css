@@ -399,6 +399,17 @@ html.translated-ltr .ti-o,html.translated-rtl .ti-o{display:block}
 .about-links-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 
 .pub-sum{margin:.35rem 0 .2rem;font-size:.92rem;line-height:1.55;color:var(--ink2)}
+.pub-details{margin:0}
+.pub-details:not([open]) > :not(summary){display:none !important}
+.pub-details>summary{display:list-item;list-style:none;cursor:pointer;position:relative;padding-right:22px}
+.pub-details>summary::-webkit-details-marker{display:none}
+.pub-details>summary::marker{content:""}
+.pub-details>summary .pub-title,.pub-details>summary .pub-meta{display:block}
+.pub-details>summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+.pub-details>summary::after{content:"";position:absolute;right:2px;top:.55em;width:7px;height:7px;border-right:1.5px solid var(--cerulean);border-bottom:1.5px solid var(--cerulean);transform:rotate(45deg);transition:transform .2s var(--ease)}
+.pub-details[open]>summary::after{transform:rotate(225deg);top:.75em}
+.pub-details .pub-sum{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.pub-details>summary::after{transition:none}}
 
 /* about profile with photo */
 .about-prof-grid{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:stretch}

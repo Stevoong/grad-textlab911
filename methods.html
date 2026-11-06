@@ -29,10 +29,11 @@
 .mg-sec li+li{margin-top:4px}
 .mg-ex{font-size:13px;color:var(--mute);margin:8px 0 0;line-height:1.6}
 .mg-ex a{color:var(--acc);border-bottom:1px solid rgba(36,64,216,.25)}
-.mg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
-.mg-card{border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;background:var(--panel)}
+.mg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0;align-items:stretch}
+.mg-card{border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;background:var(--panel);height:100%;display:flex;flex-direction:column;box-sizing:border-box}
 .mg-card h4{font-size:13.5px;margin:0 0 6px;color:var(--navy)}
-.mg-card p{font-size:13px;margin:0;color:var(--ink2);line-height:1.65}
+.mg-card p{font-size:13px;margin:0;color:var(--ink2);line-height:1.65;flex:1}
+@media(max-width:640px){.mg-grid{grid-template-columns:1fr}}
 .mg-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);margin-bottom:8px}
 .mg-demo{margin:14px 0;padding:4px 0}
 .mg-note{font-size:12.5px;color:var(--mute);background:var(--bg);border-left:3px solid var(--acc);padding:10px 12px;margin:12px 0;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
@@ -544,8 +545,9 @@
   </div><!-- .mg-main -->
   </div><!-- .mg-wrap -->
 </main>
-<footer class="site-foot"><div class="wrap">
-  <p>Text Lab. 911 · 가천대학교 · 지도교수 <a href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a></p>
+<footer class="site-foot"><div class="wrap foot-inner">
+  <span class="foot-brand notranslate" translate="no">© Text Lab. 911</span>
+  <span class="foot-note">Text Lab. 911 · 가천대학교 · 지도교수 <a class="notranslate" translate="no" href="mailto:hoseo@gachon.ac.kr">hoseo@gachon.ac.kr</a> · 개인정보 미포함</span>
 </div></footer>
 <script src="assets/research-model.js"></script>
 <script>

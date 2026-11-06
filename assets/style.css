@@ -157,7 +157,7 @@ footer a:hover, .site-foot a:hover{color:var(--cerulean)}
   :root{--gut:14px}
   .nav{background:rgba(243,245,248,.92);border-bottom-color:var(--line);backdrop-filter:saturate(1.2) blur(12px);-webkit-backdrop-filter:saturate(1.2) blur(12px)}
   .nav .wrap{display:flex;align-items:center;height:64px;min-height:64px;gap:8px}
-  .logo{flex:1 1 auto;min-width:0;height:auto;align-items:center;white-space:normal;grid-column:auto;margin-left:-15px}
+  .logo{flex:1 1 auto;min-width:0;height:auto;align-items:center;white-space:normal;grid-column:auto}
   .logo-text{height:auto}
   .logo-place{font-size:11px;line-height:1.15;white-space:nowrap}
   .menu-btn{flex:0 0 44px;height:44px;margin-left:auto;align-self:center}

@@ -70,7 +70,8 @@ const photoH=s=>s.photo
 function card(s,alum,title){
   const href='theses.html#'+sid(s.name);
   const ko=s.name_ko&&s.name_ko!==s.name?`<span class="pp-ko notranslate" translate="no">${esc(s.name_ko)}</span>`:'';
-  const meta=[s.course,s.method].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join('');
+  const ent=/^\d{2}$/.test(String(s.entry_yy||''))?`20${s.entry_yy}년 입학`:'';
+  const meta=[s.course,ent,s.method].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join('');
   const when=alum&&s.grad_note?`<span class="pp-when notranslate" translate="no">${esc(s.grad_note)}</span>`:'';
   const th=alum&&title?`<span class="pp-thesis notranslate" translate="no">${esc(title)}</span>`:'';
   const cta=alum?'<span class="pp-cta">논문 보기 <span aria-hidden="true">→</span></span>':'<span class="pp-cta">연구 보기 <span aria-hidden="true">→</span></span>';

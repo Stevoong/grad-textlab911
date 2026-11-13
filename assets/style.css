@@ -571,3 +571,76 @@ body.grad .page.has-hero{padding-top:36px}
 .interest-figs img{width:100%;height:auto;display:block;border-radius:var(--radius-sm);border:1px solid var(--line);background:#fff;image-rendering:auto}
 .interest-figs figcaption{margin-top:8px;font-size:13px;line-height:1.55;color:var(--ink2);text-align:justify;text-justify:inter-character;word-break:keep-all}
 @media(max-width:720px){.interest-figs.cols-2{grid-template-columns:1fr}}
+
+/* ---- GNB sub-menu (연구자들 → 재학생 / 졸업생) ---- */
+.nav ul li.has-sub{position:relative}
+.nav ul ul.sub{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);z-index:60;grid-column:auto;flex-direction:column;justify-content:flex-start;gap:0;min-width:132px;margin-top:10px;padding:6px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:visible}
+.nav ul ul.sub::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav ul ul.sub li{margin:0!important}
+.nav ul ul.sub a{display:block;padding:8px 12px;border-radius:var(--radius-sm);font-size:13.5px;color:var(--ink2)}
+.nav ul ul.sub a::after{display:none}
+.nav ul ul.sub a:hover,.nav ul ul.sub a:focus-visible{background:var(--acc-soft);color:var(--acc)}
+@media(min-width:901px){
+  html:not(.translated-ltr) .nav .wrap>ul{overflow:visible}
+  .nav ul li.has-sub:hover>ul.sub,.nav ul li.has-sub:focus-within>ul.sub{display:flex}
+  html.translated-ltr .nav ul li.has-sub>ul.sub{display:none!important}
+}
+@media(max-width:900px){
+  .nav ul ul.sub,.nav.open ul ul.sub{display:flex;position:static;transform:none;margin:0;padding:0 0 4px 16px;min-width:0;border:0;border-radius:0;background:none;box-shadow:none;max-height:none;overflow:visible}
+  .nav ul ul.sub::before{display:none}
+  .nav ul ul.sub a{padding:10px 0;font-size:15px;border-radius:0;border-bottom:1px solid var(--line);color:var(--ink2)}
+  .nav ul ul.sub a:hover{background:none}
+}
+
+/* ---- 연구자들 (people) ---- */
+.people-page{--pp-photo:128px}
+.prof-wide{display:flex;align-items:center;gap:28px;padding:26px 30px}
+.prof-wide .pp-photo{flex:0 0 var(--pp-photo)}
+.prof-wide .prof-body{min-width:0}
+.pp-tabs{display:inline-flex;gap:4px;padding:4px;margin:2px 0 26px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-pill);box-shadow:var(--shadow-sm)}
+.pp-tab{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:var(--radius-pill);font-size:15px;font-weight:600;color:var(--ink2);letter-spacing:-.01em;transition:background .25s var(--ease),color .25s var(--ease)}
+.pp-tab:hover{color:var(--acc)}
+.pp-tab:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pp-tab.on{background:var(--acc);color:#fff}
+.pp-count{font-family:var(--mono);font-size:11.5px;font-weight:500;min-width:24px;padding:1px 7px;border-radius:var(--radius-pill);background:var(--acc-soft);color:var(--acc);text-align:center}
+.pp-tab.on .pp-count{background:rgba(255,255,255,.2);color:#fff}
+.pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.pp-card{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:28px 20px 22px;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-sm);color:inherit;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.pp-card::before{content:"";position:absolute;left:20px;right:20px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--acc);transform:scaleX(0);transition:transform .45s var(--ease)}
+.pp-card.is-alumni::before{background:var(--navy)}
+.pp-card:hover,.pp-card:focus-visible{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(36,64,216,.35)}
+.pp-card:hover::before,.pp-card:focus-visible::before{transform:scaleX(1)}
+.pp-card:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pp-photo{width:var(--pp-photo);height:var(--pp-photo);border-radius:50%;object-fit:cover;flex:0 0 auto;background:var(--bg2);box-shadow:0 0 0 4px var(--panel),0 0 0 5px var(--line);transition:box-shadow .35s var(--ease)}
+.pp-card:hover .pp-photo{box-shadow:0 0 0 4px var(--panel),0 0 0 6px var(--acc)}
+.pp-card.is-alumni:hover .pp-photo{box-shadow:0 0 0 4px var(--panel),0 0 0 6px var(--navy)}
+.pp-photo-empty{display:flex;align-items:center;justify-content:center;color:#c3cad4}
+.pp-photo-empty svg{width:46%;height:46%}
+.pp-body{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;width:100%}
+.pp-name{font-family:var(--lat);font-size:15.5px;font-weight:600;line-height:1.3;letter-spacing:-.015em;color:var(--navy);overflow-wrap:anywhere}
+.pp-ko{font-size:13.5px;color:var(--ink2);line-height:1.3}
+.pp-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--mute)}
+.pp-meta span+span::before{content:"·";margin:0 7px;color:var(--line2)}
+.pp-when{font-size:12px;font-weight:600;color:var(--navy)}
+.pp-thesis{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:4px;padding-top:10px;border-top:1px solid var(--line);width:100%;font-size:13px;line-height:1.55;color:var(--ink2)}
+.pp-cta{margin-top:auto;padding-top:8px;font-size:12.5px;font-weight:600;color:var(--acc);opacity:.75;transition:opacity .3s}
+.pp-card.is-alumni .pp-cta{color:var(--navy)}
+.pp-card:hover .pp-cta{opacity:1}
+.pp-card:hover .pp-cta span{display:inline-block;transform:translateX(3px);transition:transform .3s var(--ease)}
+.pp-panel[hidden]{display:none}
+@media(max-width:640px){
+  .people-page{--pp-photo:104px}
+  .prof-wide{flex-direction:column;text-align:center;gap:18px;padding:24px 20px}
+  .prof-wide .prof-body{width:100%;text-align:center}
+  .prof-wide .prof-body>*{text-align:center;justify-content:center}
+  .pp-tabs{display:flex;width:100%}
+  .pp-tab{flex:1 1 0;justify-content:center;padding:10px 12px}
+  .pp-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pp-card{padding:20px 10px 16px;gap:12px;border-radius:12px}
+  .pp-name{font-size:13.5px}
+  .pp-ko{font-size:12.5px}
+  .pp-meta{font-size:10px}
+  .pp-meta span+span::before{margin:0 5px}
+  .pp-thesis{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.pp-card,.pp-card::before,.pp-photo{transition:none}.pp-card:hover{transform:none}}
